@@ -1,8 +1,6 @@
-
+import 'package:e_store/home_appbar.dart';
 import 'package:e_store/widgets/custom_shapes/containers/primary_header_container.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class HomeScreen extends StatelessWidget{
   const HomeScreen({super.key});
@@ -10,12 +8,15 @@ class HomeScreen extends StatelessWidget{
   @override
   Widget build(BuildContext context)
   {
-    return Scaffold(
+    return const  Scaffold(
       body: SingleChildScrollView(
         child: Column(
           children: [
             TPrimaryHeaderContainer(
-              child: Container()
+              child: Column(
+                children: [
+                  THomeAppBar()
+                ],)
             ),
           ],
           ),
@@ -24,4 +25,6 @@ class HomeScreen extends StatelessWidget{
     
   }
 }
+
+
 
