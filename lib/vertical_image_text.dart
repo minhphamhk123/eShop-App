@@ -23,13 +23,13 @@ class TVerticalImageText extends StatelessWidget{
     return GestureDetector(
       onTap: onTap,
       child: Padding(
-        padding: const EdgeInsets.only(right: TSizes.spaceBtwItems),
+        padding: const EdgeInsets.only(right: 30),
         child: Column(
           children:[
             Container(
               width: 56,
               height: 56,
-              padding: const EdgeInsets.all(TSizes.sm),
+              padding: const EdgeInsets.all(30),
               decoration: BoxDecoration(
                 color: backgroundColor,
                 borderRadius: BorderRadius.circular(100)
@@ -40,7 +40,7 @@ class TVerticalImageText extends StatelessWidget{
             ),
 
             //Text
-            const SizedBox(height: TSizes.spaceBtwItems/2),
+            const SizedBox(height: 30/2),
             SizedBox(
               width: 55,
               child: Text(title,/*style: ,*/ maxLines: 1,overflow: TextOverflow.ellipsis,

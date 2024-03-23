@@ -1,4 +1,5 @@
 import 'package:e_store/home_appbar.dart';
+import 'package:e_store/home_categories.dart';
 import 'package:e_store/section_heading.dart';
 import 'package:e_store/widgets/custom_shapes/containers/primary_header_container.dart';
 import 'package:e_store/widgets/custom_shapes/containers/search_container.dart';
@@ -33,7 +34,7 @@ class HomeScreen extends StatelessWidget{
                       children:[
                         ///Heading
                         TSectionHeading(title: 'Popular Categories',showActionButton: false,textColor: Colors.white),
-                        SizedBox(height: 30);
+                        SizedBox(height: 30),
                         ///Categories
                         THomeCategories(),
                       ]

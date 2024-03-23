@@ -17,19 +17,19 @@ class TSearchContainer extends StatelessWidget{
     //final dark = THelperFunctions.isDarkmode(context);
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: TSizes.defaultSpace),
+      padding: const EdgeInsets.symmetric(horizontal: 30),
       child: Container(
-        width: TDeviceUnits.getScreenWidth(context);
-        padding: const EdgeInsets.all(TSizes.md);
-        decortaion: BoxDecoration(
-          color: Colors.light,
-          borderRadius: BorderRadius.circular(TSizes.cardRadiusLg),
+        width: 30,
+        padding: const EdgeInsets.all(30),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(30),
           border: showBorder ? Border.all(color: Colors.grey):null
           ),
           child: Row(
             children: [
-              Icon(icon, color: Colors.grey)
-              const SizedBox(width: TSizes.spaceBtwItems),
+              Icon(icon, color: Colors.grey),
+              const SizedBox(width: 30),
               Text(text /*, style:*/),
 
             ],
