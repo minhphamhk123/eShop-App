@@ -1,6 +1,10 @@
 /// This class contains all the App Text in String formats.
 class TTexts {
   // -- GLOBAL Texts
+  static const String and = "and";
+  static const String submit = "Submit";
+  static const String appName = "T-Store";
+  static const String tContinue = "Continue";
   // OnBoarding Texts
   static const String onBoardingTitle1 = "Choose your product";
   static const String onBoardingTitle2 = "Select Payment Method";
@@ -27,7 +31,7 @@ class TTexts {
   static const String iAgreeTo = "I agree to";
   static const String privacyPolicy = "Privacy Policy";
   static const String termsOfUse = "Terms of use";
-  static const String verifacationCode = "verifacationCode";
+  static const String verificationCode = "verificationCode";
   static const String resendEmail = "Resend Email";
   static const String resendEmailIn = "Resend email in";
 
@@ -40,7 +44,7 @@ class TTexts {
   static const String changeYourPasswordTitle = "Password Reset Email Sent";
   static const String changeYourPasswordSubTitle = "Your Account Security is Our Priority! We've Sent You a Secure Link to Safely Change Your Password and Keep Your Account Protected.";
   static const String confirmEmail = "Verify your email address!";
-  static const String confoimEmailSubTitle = "Congratulation! Your Account Await: Verify Your Email to Start Shopping and Experience a World of Unrivaled Deals and Personal Offers.";
+  static const String confirmEmailSubTitle = "Congratulation! Your Account Await: Verify Your Email to Start Shopping and Experience a World of Unrivaled Deals and Personal Offers.";
   static const String emailNotReceivedMessage = "Didn't get the email? Check your junk/spam or resend it.";
   static const String yourAccountCreatedTitle = "Your account successfully created!";
   static const String yourAccountCreatedSubTitle = "Welcome to Your Ultimate Shopping Destination: Your Account is Created, Unleash the Joy or Seamless OnlineShopping";
