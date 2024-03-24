@@ -2,6 +2,8 @@
 class TTexts {
   // -- GLOBAL Texts
   static const String and = "and";
+  static const String skip = "skip";
+  static const String done = "Done";
   static const String submit = "Submit";
   static const String appName = "T-Store";
   static const String tContinue = "Continue";
@@ -17,7 +19,7 @@ class TTexts {
   // --Authentication Form Text
   static const String firstName = "First Name";
   static const String lastName = "Last Name";
-  static const String email = "Email";
+  static const String email = "E-Mail";
   static const String password = "Password";
   static const String newPassword = "New Password";
   static const String username = "UserName";
