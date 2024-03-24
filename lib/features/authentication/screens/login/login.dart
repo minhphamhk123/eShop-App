@@ -4,8 +4,8 @@ import 'package:e_store/utils/constants/sizes.dart';
 import 'package:e_store/common/styles/spacing_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../common/widgets.login_signup/form_divider.dart';
-import '../../../../common/widgets.login_signup/social_button.dart';
+import '../../../../common/widgets/login_signup/form_divider.dart';
+import '../../../../common/widgets/login_signup/social_button.dart';
 import '../../../../utils/constants/text_strings.dart';
 
 class LoginScreen extends StatelessWidget {
