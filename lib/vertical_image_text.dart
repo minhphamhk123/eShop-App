@@ -1,3 +1,4 @@
+import 'package:e_store/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 
 class TVerticalImageText extends StatelessWidget{

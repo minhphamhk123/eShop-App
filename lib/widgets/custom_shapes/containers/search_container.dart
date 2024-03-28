@@ -1,5 +1,9 @@
+import 'package:e_store/utils/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
+
+import '../../../utils/constants/sizes.dart';
+import '../../../utils/device/device_utility.dart';
 
 class TSearchContainer extends StatelessWidget{
   const TSearchContainer({
@@ -19,16 +23,16 @@ class TSearchContainer extends StatelessWidget{
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: TSizes.defaultSpace),
       child: Container(
-        width: TDeviceUnits.getScreenWidth(context);
-        padding: const EdgeInsets.all(TSizes.md);
-        decortaion: BoxDecoration(
-          color: Colors.light,
+        width: TDeviceUtils.getScreenWidth(context),
+        padding: const EdgeInsets.all(TSizes.md),
+        decoration: BoxDecoration(
+          color: TColors.light,
           borderRadius: BorderRadius.circular(TSizes.cardRadiusLg),
           border: showBorder ? Border.all(color: Colors.grey):null
           ),
           child: Row(
             children: [
-              Icon(icon, color: Colors.grey)
+              Icon(icon, color: Colors.grey),
               const SizedBox(width: TSizes.spaceBtwItems),
               Text(text /*, style:*/),
 
