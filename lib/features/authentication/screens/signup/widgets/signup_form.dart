@@ -42,7 +42,7 @@ class TSignupForm extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(width: TSizes.spaceBtwInputFields),
+          const SizedBox(height: TSizes.spaceBtwInputFields),
 
           /// Username
           TextFormField(
@@ -52,6 +52,7 @@ class TSignupForm extends StatelessWidget {
               prefixIcon: Icon(Iconsax.user_edit),
             ),
           ),
+          const SizedBox(height: TSizes.spaceBtwInputFields),
 
           /// Email
           TextFormField(

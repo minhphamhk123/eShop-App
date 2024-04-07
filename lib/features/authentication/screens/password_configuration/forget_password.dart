@@ -21,9 +21,8 @@ class ForgetPassword extends StatelessWidget {
             /// Headings
             Text(TTexts.forgetPasswordTitle,
                 style: Theme.of(context).textTheme.headlineMedium),
-            const SizedBox(
-              height: TSizes.spaceBtwItems,
-            ),
+            const SizedBox(height: TSizes.spaceBtwItems),
+
             Text(TTexts.forgetPasswordSubTitle,
                 style: Theme.of(context).textTheme.labelMedium),
             const SizedBox(
@@ -37,6 +36,7 @@ class ForgetPassword extends StatelessWidget {
                 prefixIcon: Icon(Iconsax.direct_right),
               ),
             ),
+            const SizedBox(height: TSizes.spaceBtwItems),
 
             /// Submit Button
             SizedBox(
