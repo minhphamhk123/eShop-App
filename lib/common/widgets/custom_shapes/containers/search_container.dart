@@ -2,8 +2,9 @@ import 'package:e_store/utils/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
-import '../../../utils/constants/sizes.dart';
-import '../../../utils/device/device_utility.dart';
+import '../../../../utils/constants/sizes.dart';
+import '../../../../utils/device/device_utility.dart';
+import '../../../../utils/helpers/helper_functions.dart';
 
 class TSearchContainer extends StatelessWidget{
   const TSearchContainer({
@@ -18,7 +19,7 @@ class TSearchContainer extends StatelessWidget{
   @override
   Widget build(BuildContext context)
   {
-    //final dark = THelperFunctions.isDarkmode(context);
+    final dark = THelperFunctions.isDarkMode(context);
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: TSizes.defaultSpace),
