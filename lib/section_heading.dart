@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class TSectionHeading extends StatelessWidget{
+class TSectionHeading extends StatelessWidget {
   const TSectionHeading({
     super.key,
     this.onPressed,
@@ -16,12 +16,14 @@ class TSectionHeading extends StatelessWidget{
   final void Function()? onPressed;
 
   @override
-  Widget build(BuildContext context)
-  {
+  Widget build(BuildContext context) {
     return Row(
-      children:[
-        Text(title,/*style: ,*/ maxLines: 1,overflow: TextOverflow.ellipsis),
-        if (showActionButton) TextButton(onPressed: onPressed,child: Text(buttonTitle))
+      children: [
+        Text(title,
+            style: Theme.of(context).textTheme.headlineSmall!.apply(color: textColor),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis),
+        if (showActionButton) TextButton(onPressed: onPressed, child: Text(buttonTitle))
       ],
     );
   }
