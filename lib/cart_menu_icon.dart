@@ -2,13 +2,16 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
+import 'utils/constants/colors.dart';
+
 class TCartCounterIcon extends StatelessWidget {
   const TCartCounterIcon({
     super.key,
-    required this.iconColor, /*this.onPressed*/
+    required this.iconColor,
+    //required this.onPressed,
   });
 
-  //final VoidCallBack onPressed;
+  //final VoidCallback onPressed;
   final Color iconColor;
 
   @override
@@ -22,11 +25,11 @@ class TCartCounterIcon extends StatelessWidget {
             width: 18,
             height: 18,
             decoration: BoxDecoration(
-              color: Colors.black,
+              color: TColors.black,
               borderRadius: BorderRadius.circular(100),
             ),
             child: const Center(
-              child: Text("2", /*style: */)
+              child: Text("2", /*style: Theme.of(context).textTheme.labelLarge!.apply(color: TColor.white, fontSizeFactor: 0.8)*/)
             ),
           )
         )

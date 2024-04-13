@@ -5,6 +5,8 @@ import 'package:e_store/widgets/custom_shapes/containers/primary_header_containe
 import 'package:e_store/widgets/custom_shapes/containers/search_container.dart';
 import 'package:flutter/material.dart';
 
+import 'utils/constants/sizes.dart';
+
 class HomeScreen extends StatelessWidget{
   const HomeScreen({super.key});
 
@@ -21,15 +23,15 @@ class HomeScreen extends StatelessWidget{
                   ///Header
 
                   THomeAppBar(),
-                  SizedBox(height: 30),
+                  SizedBox(height: TSizes.spaceBtwSections),
                   ///Searchbar
 
                   TSearchContainer(text: 'Search in store'),
-                  SizedBox(height: 30),
+                  SizedBox(height: TSizes.spaceBtwSections),
 
                   ///Categories
                   Padding(
-                    padding:  EdgeInsets.only(left: 30),
+                    padding:  EdgeInsets.only(left: TSizes.defaultSpace),
                     child: Column(
                       children:[
                         ///Heading
