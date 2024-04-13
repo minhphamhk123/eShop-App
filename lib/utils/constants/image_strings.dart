@@ -24,4 +24,7 @@ class TImages {
 
   // -- Store
   static const String clothIcon ='assets/icons/categories/icons8-tailors-dummy-64.png';
+
+  // --Product
+  static const String productImage3 = 'assets/images/products/product-jacket.png';
 }
