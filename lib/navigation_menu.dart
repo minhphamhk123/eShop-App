@@ -1,9 +1,10 @@
 import 'package:e_store/features/personalization/screens/settings/settings.dart';
 import 'package:e_store/features/shop/screens/wishlist/wishlist.dart';
-import 'package:e_store/home.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+
+import 'features/shop/screens/home/home.dart';
 
 class NavigationMenu extends StatelessWidget {
   const NavigationMenu({super.key});

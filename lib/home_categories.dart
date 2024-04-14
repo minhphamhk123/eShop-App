@@ -1,4 +1,4 @@
-import 'package:e_store/common/widgets/image_text_widgets/vertical_image_text.dart';
+import 'package:e_store/vertical_image_text.dart';
 import 'package:flutter/material.dart';
 
 class THomeCategories extends StatelessWidget{

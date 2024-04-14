@@ -3,7 +3,6 @@ import 'package:e_store/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
-import '../../../../home.dart';
 
 class FavouriteScreen extends StatelessWidget {
   const FavouriteScreen({super.key});

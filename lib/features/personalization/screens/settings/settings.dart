@@ -1,6 +1,5 @@
 import 'package:e_store/widgets/appbar/appbar.dart';
 import 'package:e_store/common/widgets/list_tiles/settings_menu_tile.dart';
-import 'package:e_store/common/widgets/texts/section_heading.dart';
 import 'package:e_store/utils/constants/image_strings.dart';
 import 'package:e_store/utils/constants/sizes.dart';
 import 'package:e_store/widgets/custom_shapes/containers/primary_header_container.dart';
@@ -8,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../../common/widgets/list_tiles/user_profile_tile.dart';
+import '../../../../section_heading.dart';
 import '../../../../utils/constants/colors.dart';
 
 class SettingScreen extends StatelessWidget{
