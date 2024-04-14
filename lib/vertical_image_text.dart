@@ -1,3 +1,4 @@
+import 'package:e_store/utils/constants/colors.dart';
 import 'package:e_store/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 
@@ -6,8 +7,8 @@ class TVerticalImageText extends StatelessWidget{
     super.key,
     required this.image,
     required this.title,
-    this.textColor = Colors.white,
-    this.backgroundColor = Colors.white,
+    this.textColor = TColors.white,
+    this.backgroundColor = TColors.white,
     this.onTap,
   });
 
@@ -36,7 +37,7 @@ class TVerticalImageText extends StatelessWidget{
                 borderRadius: BorderRadius.circular(100)
               ),
               child: Center(
-                child: Image(image: AssetImage(image),fit: BoxFit.cover, color: Colors.black)
+                child: Image(image: AssetImage(image),fit: BoxFit.cover, color: TColors.black)
                 ),
             ),
 
@@ -44,7 +45,7 @@ class TVerticalImageText extends StatelessWidget{
             const SizedBox(height: TSizes.spaceBtwItems/2),
             SizedBox(
               width: 55,
-              child: Text(title,/*style: ,*/ maxLines: 1,overflow: TextOverflow.ellipsis,
+              child: Text(title,style: Theme.of(context).textTheme.labelMedium!, maxLines: 1,overflow: TextOverflow.ellipsis,
               ),
             )
           ],
