@@ -14,14 +14,14 @@ class FavouriteScreen extends StatelessWidget {
       appBar: TAppBar(
         title: Text('Wishlist'/* style:  */),
         actions: [
-          TCircularIcon(icon: Iconsax.add, onPressed: () => Get.to(const HomeScreen())),
+          //TCircularIcon(icon: Iconsax.add, onPressed: () => Get.to(const HomeScreen())),
         ]
       ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(TSizes.defaultSpace),
           child: Column(
-            children: [TGridLayout(itemCount: 6, itemBuilder:(_, index) => const TProductCardVertical())],
+            //children: [TGridLayout(itemCount: 6, itemBuilder:(_, index) => const TProductCardVertical())],
           ),
         )
       )
