@@ -21,4 +21,10 @@ class TImages {
   static const String deliveredInPlaneIllustration = "assets/images/animations/sammy-line-come-back-later.png";
   static const String deliveredEmailIllustration = "assets/images/animations/sammy-line-man-receives-a-mail.png";
   static const String verifyIllustration = "assets/images/animations/sammy-line-travel-backpack-with-passport-and-air-ticket.gif";
+
+  // -- Store
+  static const String clothIcon ='assets/icons/categories/icons8-tailors-dummy-64.png';
+
+  // --Product
+  static const String productImage3 = 'assets/images/products/product-jacket.png';
 }

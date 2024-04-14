@@ -34,7 +34,7 @@ class ResetPassword extends StatelessWidget {
               ),
               const SizedBox(height: TSizes.spaceBtwItems,),
               Text(TTexts.changeYourPasswordSubTitle, style: Theme.of(context).textTheme.labelMedium, textAlign: TextAlign.center),
-              const SizedBox(height: TSizes.spaceBtwSections,),
+              const SizedBox(height: TSizes.spaceBtwSections),
 
               /// Buttons
               SizedBox(
