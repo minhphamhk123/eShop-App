@@ -1,3 +1,4 @@
+import 'package:e_store/features/personalization/screens/settings/settings.dart';
 import 'package:e_store/features/shop/screens/wishlist/wishlist.dart';
 import 'package:e_store/home.dart';
 import 'package:flutter/material.dart';
@@ -36,5 +37,5 @@ class NavigationMenu extends StatelessWidget {
 
 class NavigationController extends GetxController{
   final Rx<int> selectedIndex = 0.obs;
-  final screens = [const HomeScreen(), Container(color: Colors.purple),const FavouriteScreen(), Container(color: Colors.blue)];
+  final screens = [const HomeScreen(), Container(color: Colors.purple),const FavouriteScreen(), const SettingScreen()];
 }
