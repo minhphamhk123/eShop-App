@@ -33,7 +33,7 @@ class SettingScreen extends StatelessWidget{
             ),
             ),
             ///body
-            const Padding(
+            Padding(
               padding: EdgeInsets.all(TSizes.defaultSpace),
               child: Column(
                 children: [
