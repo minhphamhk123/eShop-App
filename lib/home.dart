@@ -1,6 +1,6 @@
-import 'package:e_store/home_appbar.dart';
-import 'package:e_store/home_categories.dart';
-import 'package:e_store/section_heading.dart';
+import 'package:e_store/features/shop/screens/home/widgets/home_appbar.dart';
+import 'package:e_store/features/shop/screens/home/widgets/home_categories.dart';
+import 'package:e_store/common/widgets/texts/section_heading.dart';
 import 'package:e_store/widgets/custom_shapes/containers/primary_header_container.dart';
 import 'package:e_store/widgets/custom_shapes/containers/search_container.dart';
 import 'package:flutter/material.dart';
