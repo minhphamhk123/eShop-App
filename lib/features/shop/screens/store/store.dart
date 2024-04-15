@@ -2,7 +2,6 @@ import 'package:e_store/common/widgets/appbar/appbar.dart';
 import 'package:e_store/common/widgets/appbar/tabbar.dart';
 import 'package:e_store/common/widgets/custom_shapes/containers/search_container.dart';
 import 'package:e_store/common/widgets/layouts/grid_layout.dart';
-import 'package:e_store/common/widgets/login_signup/social_button.dart';
 import 'package:e_store/common/widgets/products.cart/cart_menu_icon.dart';
 import 'package:e_store/features/shop/screens/store/widgets/category_tab.dart';
 import 'package:e_store/section_heading.dart';
@@ -11,9 +10,7 @@ import 'package:e_store/utils/helpers/helper_functions.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:get/get.dart';
 
-import '../../../../common/widgets/brands/brand_show_case.dart';
 import '../../../../common/widgets/custom_shapes/containers/rounded_container.dart';
 import '../../../../common/widgets/images/t_circular_image.dart';
 import '../../../../utils/constants/colors.dart';
@@ -32,7 +29,7 @@ class StoreScreen extends StatelessWidget {
           title:
               Text('Store', style: Theme.of(context).textTheme.headlineMedium),
           actions: [
-            TCartCounterIcon(onPressed: () {}, iconColor: TColors.white)
+            TCartCounterIcon(onPressed: (){}, iconColor: TColors.white)
           ],
         ),
         body: NestedScrollView(
