@@ -1,12 +1,13 @@
-import 'package:e_store/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
+
+import '../../../utils/constants/sizes.dart';
 
 class TGridLayout extends StatelessWidget {
   const TGridLayout({
     super.key,
     required this.itemCount,
-    required this.itemBuilder,
     this.mainAxisExtent = 288,
+    required this.itemBuilder,
   });
 
   final int itemCount;
@@ -16,17 +17,16 @@ class TGridLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-      itemCount: itemCount,
-      shrinkWrap: true,
-      padding: EdgeInsets.zero,
-      physics: const NeverScrollableScrollPhysics(),
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        mainAxisExtent: mainAxisExtent,
-        mainAxisSpacing: TSizes.gridViewSpacing,
-        crossAxisSpacing: TSizes.gridViewSpacing,
-      ),
-      itemBuilder: itemBuilder,
-    );
+        itemCount: itemCount,
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
+        padding: EdgeInsets.zero,
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisSpacing: TSizes.gridViewSpacing,
+          mainAxisSpacing: TSizes.gridViewSpacing,
+          crossAxisCount: 2,
+          mainAxisExtent: mainAxisExtent,
+        ),
+        itemBuilder: itemBuilder);
   }
 }
