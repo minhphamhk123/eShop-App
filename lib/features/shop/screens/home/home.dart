@@ -3,13 +3,14 @@ import 'package:e_store/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:e_store/features/shop/screens/home/widgets/promo_slider.dart';
 import 'package:e_store/section_heading.dart';
 import 'package:e_store/utils/constants/image_strings.dart';
+import 'package:e_store/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../common/widgets/custom_shapes/containers/primary_header_container.dart';
 import '../../../../common/widgets/custom_shapes/containers/search_container.dart';
 import '../../../../common/widgets/layouts/grid_layout.dart';
 import '../../../../home_categories.dart';
-import '../../../../utils/constants/sizes.dart';
+import '../../../../utils/constants/colors.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -25,12 +26,12 @@ class HomeScreen extends StatelessWidget {
               children: [
                 ///Header
                 THomeAppBar(),
-                SizedBox(height: 30),
+                SizedBox(height: TSizes.spaceBtwSections),
 
                 ///Searchbar
 
                 TSearchContainer(text: 'Search in store'),
-                SizedBox(height: 30),
+                SizedBox(height: TSizes.spaceBtwSections),
 
                 ///Categories
                 Padding(
@@ -40,12 +41,14 @@ class HomeScreen extends StatelessWidget {
                       TSectionHeading(
                           title: 'Popular Categories',
                           showActionButton: false,
-                          textColor: Colors.white),
-                      SizedBox(height: 30),
+                          textColor: TColors.white),
+                      SizedBox(height: TSizes.spaceBtwSections),
 
                       ///Categories
                       THomeCategories(),
-                    ]))
+                    ])
+                ),
+                SizedBox(height: TSizes.spaceBtwSections)
               ],
             )),
 

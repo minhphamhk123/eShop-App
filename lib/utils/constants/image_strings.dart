@@ -186,4 +186,9 @@ class TImages {
       "assets/images/products/slipper-product-3.png";
   static const String productImage77 =
       "assets/images/products/slipper-product.png";
+
+
+  // -- Store
+  static const String clothIcon ='assets/icons/categories/icons8-tailors-dummy-64.png';
+  
 }
