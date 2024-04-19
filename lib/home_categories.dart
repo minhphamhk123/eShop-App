@@ -1,6 +1,8 @@
+import 'package:e_store/features/shop/screens/sub_category/sub_categories.dart';
 import 'package:e_store/utils/constants/image_strings.dart';
 import 'package:e_store/vertical_image_text.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class THomeCategories extends StatelessWidget{
   const THomeCategories({
@@ -17,7 +19,7 @@ class THomeCategories extends StatelessWidget{
         itemCount: 6,
         scrollDirection: Axis.horizontal,
         itemBuilder: (_,index){
-          return TVerticalImageText(image: TImages.facebook, title: 'Shoes', onTap: (){});
+          return TVerticalImageText(image: TImages.facebook, title: 'Shoes', onTap: () => Get.to(() => const SubCategoriesScreen()));
         },
       ),
     );
