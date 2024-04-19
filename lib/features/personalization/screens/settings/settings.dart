@@ -1,8 +1,11 @@
 
 import 'package:e_store/common/widgets/list_tiles/settings_menu_tile.dart';
+import 'package:e_store/features/shop/screens/order/order.dart';
 import 'package:e_store/utils/constants/image_strings.dart';
 import 'package:e_store/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../../common/widgets/appbar/appbar.dart';
@@ -44,7 +47,7 @@ class SettingScreen extends StatelessWidget{
 
                   TSettingsMenuTile(icon: Iconsax.icon, title: 'My Address', subTitle: 'Set shopping delivery address'),
                   TSettingsMenuTile(icon: Iconsax.shopping_cart, title: 'My Cart', subTitle: 'Add, remove products and move to checkout'),
-                  TSettingsMenuTile(icon: Iconsax.bag_tick, title: 'My Orders', subTitle: 'In-progress and Completed Orders'),
+                  TSettingsMenuTile(icon: Iconsax.bag_tick, title: 'My Orders', subTitle: 'In-progress and Completed Orders', onTap: () => Get.to(() => const OrderScreen())),
                   TSettingsMenuTile(icon: Iconsax.bank, title: 'Bank Account', subTitle: 'Withdraw balance to registered bank accounts'),
                   TSettingsMenuTile(icon: Iconsax.discount_shape, title: 'My Coupons', subTitle: 'List of all the discounted coupons'),
                   TSettingsMenuTile(icon: Iconsax.notification, title: 'Notifications', subTitle: 'Set any kind of notification messages'),
