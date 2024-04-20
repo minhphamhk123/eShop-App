@@ -1,4 +1,5 @@
 import 'package:e_store/common/widgets/layouts/grid_layout.dart';
+import 'package:e_store/common/widgets/products.cart/product_cards/product_card_vertical.dart';
 import 'package:e_store/section_heading.dart';
 import 'package:flutter/material.dart';
 
@@ -28,7 +29,7 @@ class TCategoryTab extends StatelessWidget {
               TSectionHeading(title: 'You might like', onPressed: () {}),
               const SizedBox(height: TSizes.spaceBtwItems),
 
-              // TGridLayout(itemCount: 4, itemBuilder: (_, index) => TProductCartVertical())
+              TGridLayout(itemCount: 4, itemBuilder: (_, index) => const TProductCardVertical())
             ],
           ),
         ),

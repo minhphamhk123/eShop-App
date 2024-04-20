@@ -1,12 +1,8 @@
-import 'dart:ui';
-
 import 'package:e_store/utils/constants/colors.dart';
 import 'package:e_store/utils/helpers/helper_functions.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../../rounded_container.dart';
@@ -25,7 +21,7 @@ class TProductCardVertical extends StatelessWidget {
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
     return GestureDetector(
-      onTap: (){},
+      onTap: () {},
       child: Container(
         width: 180,
         padding: const EdgeInsets.all(1),
@@ -73,7 +69,7 @@ class TProductCardVertical extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(left: TSizes.sm),
+              padding: const EdgeInsets.only(left: TSizes.sm),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -102,30 +98,38 @@ class TProductCardVertical extends StatelessWidget {
                       )
                     ],
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-
-                      ///Price
-                      TProductPriceText(price: '35.5',),
-
-                      ///Add to cart
-                      Container(
-                        decoration: const BoxDecoration(
-                            color: TColors.dark,
-                            borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(TSizes.cardRadiusMd),
-                                bottomRight:
-                                    Radius.circular(TSizes.productImageRadius))),
-                        child: const SizedBox(
-                          width: TSizes.iconLg * 1.2,
-                            height: TSizes.iconLg * 1.2,
-                            child: Center(child: Icon(Iconsax.add, color: TColors.white))),
-                      ),
-                    ],
-                  ),
                 ],
               ),
+            ),
+
+            // Todo: Add Spacer() here to keep height of each Box same in case 1 or case 2 lines of Headings
+            const Spacer(),
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                ///Price
+                const Padding(
+                    padding: EdgeInsets.only(left: TSizes.sm),
+                    child: TProductPriceText(
+                      price: '35.5',
+                    )),
+
+                ///Add to cart
+                Container(
+                  decoration: const BoxDecoration(
+                      color: TColors.dark,
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(TSizes.cardRadiusMd),
+                          bottomRight:
+                              Radius.circular(TSizes.productImageRadius))),
+                  child: const SizedBox(
+                      width: TSizes.iconLg * 1.2,
+                      height: TSizes.iconLg * 1.2,
+                      child: Center(
+                          child: Icon(Iconsax.add, color: TColors.white))),
+                ),
+              ],
             ),
           ],
         ),
@@ -133,4 +137,3 @@ class TProductCardVertical extends StatelessWidget {
     );
   }
 }
-

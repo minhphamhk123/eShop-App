@@ -7,9 +7,7 @@ import 'package:e_store/features/shop/screens/store/widgets/category_tab.dart';
 import 'package:e_store/section_heading.dart';
 import 'package:e_store/utils/constants/image_strings.dart';
 import 'package:e_store/utils/helpers/helper_functions.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 import '../../../../common/widgets/custom_shapes/containers/rounded_container.dart';
 import '../../../../common/widgets/images/t_circular_image.dart';
@@ -29,7 +27,7 @@ class StoreScreen extends StatelessWidget {
           title:
               Text('Store', style: Theme.of(context).textTheme.headlineMedium),
           actions: [
-            TCartCounterIcon(onPressed: (){}, iconColor: TColors.white)
+            TCartCounterIcon(onPressed: (){})
           ],
         ),
         body: NestedScrollView(
@@ -99,7 +97,7 @@ class StoreScreen extends StatelessWidget {
                                           child: Column(
                                             mainAxisSize: MainAxisSize.min,
                                             crossAxisAlignment:
-                                                CrossAxisAlignment.center,
+                                                CrossAxisAlignment.start,
                                             children: [
                                               // const TBrandTitleWithVerifiedIcon(title: 'Nike', brandTextSize: TextSizes.large),
                                               Text(
