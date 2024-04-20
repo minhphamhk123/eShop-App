@@ -1,8 +1,6 @@
 import 'package:e_store/common/widgets/appbar/appbar.dart';
 import 'package:e_store/utils/constants/sizes.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:iconsax/iconsax.dart';
 
 class AddNewAddressScreen extends StatelessWidget {
@@ -14,7 +12,7 @@ class AddNewAddressScreen extends StatelessWidget {
       appBar: const TAppBar(showBackArrow: true, title: Text('Add new Address')),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(TSizes.defaultSpace),
+          padding: const EdgeInsets.all(TSizes.defaultSpace),
           child: Form(
             child: Column(
               children: [
