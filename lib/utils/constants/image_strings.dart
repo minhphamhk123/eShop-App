@@ -32,9 +32,16 @@ class TImages {
   static const String verifyIllustration =
       "assets/images/animations/sammy-line-travel-backpack-with-passport-and-air-ticket.gif";
 
+  // -- Banners
   static const String promoBanner1 = "assets/images/banners/banner_1.jpg";
   static const String promoBanner2 = "assets/images/banners/banner_2.jpg";
   static const String promoBanner3 = "assets/images/banners/banner_3.jpg";
+  static const String promoBanner4 = "assets/images/banners/banner_4.jpg";
+
+  // -- Product Reviews
+  static const String userProfileImage1 = "assets/images/reviews/review_profile_image_1.jpg";
+  static const String userProfileImage2 = "assets/images/reviews/review_profile_image_2.jpg";
+  static const String userProfileImage3 = "assets/images/reviews/review_profile_image_3.jpg";
 
   // -- Products
   static const String productImage1 = "assets/images/products/nike-shoes.png";
@@ -190,5 +197,5 @@ class TImages {
 
   // -- Store
   static const String clothIcon ='assets/icons/categories/icons8-tailors-dummy-64.png';
-  
+
 }

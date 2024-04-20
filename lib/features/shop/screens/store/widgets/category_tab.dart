@@ -1,9 +1,9 @@
 import 'package:e_store/common/widgets/layouts/grid_layout.dart';
-import 'package:e_store/common/widgets/products.cart/product_cards/product_card_vertical.dart';
 import 'package:e_store/section_heading.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../common/widgets/brands/brand_show_case.dart';
+import '../../../../../common/widgets/products/product_cards/product_card_vertical.dart';
 import '../../../../../utils/constants/image_strings.dart';
 import '../../../../../utils/constants/sizes.dart';
 
