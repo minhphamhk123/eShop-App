@@ -9,6 +9,7 @@ import 'package:e_store/utils/constants/image_strings.dart';
 import 'package:e_store/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../common/widgets/brands/brand_card.dart';
 import '../../../../common/widgets/custom_shapes/containers/rounded_container.dart';
 import '../../../../common/widgets/images/t_circular_image.dart';
 import '../../../../utils/constants/colors.dart';
@@ -68,51 +69,8 @@ class StoreScreen extends StatelessWidget {
                             itemCount: 4,
                             mainAxisExtent: 80,
                             itemBuilder: (_, index) {
-                              return GestureDetector(
-                                onTap: () {},
-                                child: TRoundedContainer(
-                                    padding: const EdgeInsets.all(TSizes.sm),
-                                    showBorder: true,
-                                    backgroundColor: Colors.transparent,
-                                    child: Row(
-                                      children: [
-                                        /// -- Icon
-                                        Flexible(
-                                          child: TCircularImage(
-                                            isNetworkImage: false,
-                                            image: TImages.clothIcon,
-                                            backgroundColor: Colors.transparent,
-                                            overlayColor:
-                                                THelperFunctions.isDarkMode(
-                                                        context)
-                                                    ? TColors.white
-                                                    : TColors.black,
-                                          ),
-                                        ),
-                                        const SizedBox(
-                                            width: TSizes.spaceBtwItems / 2),
 
-                                        /// -- Text
-                                        Expanded(
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.min,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              // const TBrandTitleWithVerifiedIcon(title: 'Nike', brandTextSize: TextSizes.large),
-                                              Text(
-                                                '256 products',
-                                                overflow: TextOverflow.ellipsis,
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .labelMedium,
-                                              )
-                                            ],
-                                          ),
-                                        )
-                                      ],
-                                    )),
-                              );
+                              return const TBrandCard(showBorder: false,);
                             })
                       ],
                     ),
@@ -146,3 +104,4 @@ class StoreScreen extends StatelessWidget {
     );
   }
 }
+

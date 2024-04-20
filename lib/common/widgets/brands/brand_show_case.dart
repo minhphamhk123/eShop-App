@@ -4,6 +4,7 @@ import '../../../utils/constants/image_strings.dart';
 import '../../../utils/constants/sizes.dart';
 import '../../../utils/helpers/helper_functions.dart';
 import '../custom_shapes/containers/rounded_container.dart';
+import 'brand_card.dart';
 
 class TBrandShowcase extends StatelessWidget {
   const TBrandShowcase({
@@ -25,7 +26,7 @@ class TBrandShowcase extends StatelessWidget {
             children: [
 
               /// Brand with Products Count
-              // const TBrandCard(showBorder: false),
+              const TBrandCard(showBorder: false),
               const SizedBox(height: TSizes.spaceBtwItems,),
 
               /// Brand Top 3 Products Count
