@@ -7,7 +7,13 @@ import '../../../utils/constants/sizes.dart';
 class TCircularIcon extends StatelessWidget {
   const TCircularIcon({
     super.key,
-    this.width, this.height, required this.icon, this.backgroundColor, this.color, this.onPressed, this.size = TSizes.lg,
+    this.width,
+    this.height,
+    required this.icon,
+    this.backgroundColor,
+    this.color,
+    this.onPressed,
+    this.size = TSizes.lg,
   });
 
   final double? width, height, size;
@@ -26,11 +32,11 @@ class TCircularIcon extends StatelessWidget {
         color: backgroundColor != null
             ? backgroundColor!
             : THelperFunctions.isDarkMode(context)
-            ? TColors.black.withOpacity(0.9)
-            : TColors.white.withOpacity(0.9),
+                ? TColors.black.withOpacity(0.9)
+                : TColors.white.withOpacity(0.9),
       ),
       child: IconButton(
-        onPressed: () {},
+        onPressed: onPressed,
         icon: Icon(icon, color: color, size: size),
       ),
     );

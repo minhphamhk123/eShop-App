@@ -2,17 +2,13 @@ import 'package:e_store/common/widgets/appbar/appbar.dart';
 import 'package:e_store/common/widgets/appbar/tabbar.dart';
 import 'package:e_store/common/widgets/custom_shapes/containers/search_container.dart';
 import 'package:e_store/common/widgets/layouts/grid_layout.dart';
-import 'package:e_store/common/widgets/products.cart/cart_menu_icon.dart';
 import 'package:e_store/features/shop/screens/store/widgets/category_tab.dart';
 import 'package:e_store/section_heading.dart';
-import 'package:e_store/utils/constants/image_strings.dart';
 import 'package:e_store/utils/helpers/helper_functions.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
-import '../../../../common/widgets/custom_shapes/containers/rounded_container.dart';
-import '../../../../common/widgets/images/t_circular_image.dart';
+import '../../../../common/widgets/brands/brand_card.dart';
+import '../../../../common/widgets/products/cart/cart_menu_icon.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/sizes.dart';
 
@@ -29,7 +25,7 @@ class StoreScreen extends StatelessWidget {
           title:
               Text('Store', style: Theme.of(context).textTheme.headlineMedium),
           actions: [
-            TCartCounterIcon(onPressed: (){}, iconColor: TColors.white)
+            TCartCounterIcon(onPressed: (){})
           ],
         ),
         body: NestedScrollView(
@@ -70,51 +66,8 @@ class StoreScreen extends StatelessWidget {
                             itemCount: 4,
                             mainAxisExtent: 80,
                             itemBuilder: (_, index) {
-                              return GestureDetector(
-                                onTap: () {},
-                                child: TRoundedContainer(
-                                    padding: const EdgeInsets.all(TSizes.sm),
-                                    showBorder: true,
-                                    backgroundColor: Colors.transparent,
-                                    child: Row(
-                                      children: [
-                                        /// -- Icon
-                                        Flexible(
-                                          child: TCircularImage(
-                                            isNetworkImage: false,
-                                            image: TImages.clothIcon,
-                                            backgroundColor: Colors.transparent,
-                                            overlayColor:
-                                                THelperFunctions.isDarkMode(
-                                                        context)
-                                                    ? TColors.white
-                                                    : TColors.black,
-                                          ),
-                                        ),
-                                        const SizedBox(
-                                            width: TSizes.spaceBtwItems / 2),
 
-                                        /// -- Text
-                                        Expanded(
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.min,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.center,
-                                            children: [
-                                              // const TBrandTitleWithVerifiedIcon(title: 'Nike', brandTextSize: TextSizes.large),
-                                              Text(
-                                                '256 products',
-                                                overflow: TextOverflow.ellipsis,
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .labelMedium,
-                                              )
-                                            ],
-                                          ),
-                                        )
-                                      ],
-                                    )),
-                              );
+                              return const TBrandCard(showBorder: false,);
                             })
                       ],
                     ),
@@ -148,3 +101,4 @@ class StoreScreen extends StatelessWidget {
     );
   }
 }
+

@@ -32,10 +32,30 @@ class TImages {
   static const String verifyIllustration =
       "assets/images/animations/sammy-line-travel-backpack-with-passport-and-air-ticket.gif";
 
+  // -- Banners
   static const String promoBanner1 = "assets/images/banners/banner_1.jpg";
   static const String promoBanner2 = "assets/images/banners/banner_2.jpg";
   static const String promoBanner3 = "assets/images/banners/banner_3.jpg";
+  static const String promoBanner4 = "assets/images/banners/banner_4.jpg";
 
+  // -- Product Reviews
+  static const String userProfileImage1 =
+      "assets/images/reviews/review_profile_image_1.jpg";
+  static const String userProfileImage2 =
+      "assets/images/reviews/review_profile_image_2.jpg";
+  static const String userProfileImage3 =
+      "assets/images/reviews/review_profile_image_3.jpg";
+
+  // -- Payment Methods
+  static const String applePay = "assets/icons/payment_methods/apple-pay.png";
+  static const String googlePay = "assets/icons/payment_methods/google-pay.png";
+  static const String creditCard = "assets/icons/payment_methods/credit-card.png";
+  static const String masterCard = "assets/icons/payment_methods/master-card.png";
+  static const String paypal = "assets/icons/payment_methods/paypal.png";
+  static const String visa = "assets/icons/payment_methods/visa.png";
+  static const String paystack = "assets/icons/payment_methods/paystack.png";
+  static const String paytm = "assets/icons/payment_methods/paytm.png";
+  static const String successfulPaymentIcon = "assets/icons/payment_methods/successful_payment_icon.png";
   // -- Products
   static const String productImage1 = "assets/images/products/nike-shoes.png";
   static const String productImage2 = "assets/images/products/product-1.png";
@@ -187,8 +207,7 @@ class TImages {
   static const String productImage77 =
       "assets/images/products/slipper-product.png";
 
-
   // -- Store
-  static const String clothIcon ='assets/icons/categories/icons8-tailors-dummy-64.png';
-  
+  static const String clothIcon =
+      'assets/icons/categories/icons8-tailors-dummy-64.png';
 }
