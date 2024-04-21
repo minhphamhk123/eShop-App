@@ -1,4 +1,4 @@
-// import 'package:e_store/features/shop/screens/porduct_reviews/product_reviews.dart';
+// import 'package:e_store/features/shop/screens/product_reviews/product_reviews.dart';
 // import 'package:flutter/material.dart';
 // import 'package:get/get_core/src/get_main.dart';
 // import 'package:iconsax/iconsax.dart';
