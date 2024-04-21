@@ -1,3 +1,4 @@
+import 'package:e_store/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -12,13 +13,13 @@ import '../../../../../utils/constants/sizes.dart';
 class TProductImageSlider extends StatelessWidget {
   const TProductImageSlider({
     super.key,
-    required this.dark,
   });
 
-  final bool dark;
+
 
   @override
   Widget build(BuildContext context) {
+    final dark = THelperFunctions.isDarkMode(context);
     return TCurvedEdgeWidget(
       child: Container(
         color: dark ? TColors.darkerGrey : TColors.light,
