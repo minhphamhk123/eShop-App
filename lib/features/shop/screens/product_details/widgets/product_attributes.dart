@@ -104,7 +104,6 @@ class TProductAttributes extends StatelessWidget {
           ],
         ),
 
-
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -113,6 +112,7 @@ class TProductAttributes extends StatelessWidget {
               height: TSizes.spaceBtwItems / 2,
             ),
             Wrap(
+              spacing: 8,
               children: [
                 TChoiceChip(text: 'EU 34', selected: true, onSelected: (value){}),
                 TChoiceChip(text: 'EU 36', selected: false, onSelected: (value){}),

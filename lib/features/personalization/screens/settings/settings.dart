@@ -63,7 +63,7 @@ class SettingScreen extends StatelessWidget{
                   const SizedBox(height: TSizes.spaceBtwSections),
                   SizedBox(
                     width: double.infinity,
-                    child: OutlinedButton(onPressed: (){}, child: Text('Logout')),
+                    child: OutlinedButton(onPressed: (){}, child: const Text('Logout')),
                   ),
                   const SizedBox(height: TSizes.spaceBtwSections*2.5),
                 ],
