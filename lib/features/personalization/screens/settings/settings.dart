@@ -10,12 +10,13 @@ import '../../../../common/widgets/custom_shapes/containers/primary_header_conta
 import '../../../../common/widgets/list_tiles/user_profile_tile.dart';
 import '../../../../section_heading.dart';
 import '../../../../utils/constants/colors.dart';
+import '../profile/profile.dart';
 
-class SettingScreen extends StatelessWidget {
+class SettingScreen extends StatelessWidget{
   const SettingScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context){
     return Scaffold(
         body: SingleChildScrollView(
             child: Column(
@@ -34,7 +35,7 @@ class SettingScreen extends StatelessWidget {
               const SizedBox(height: TSizes.spaceBtwSections),
 
               ///User Profile Card
-              const TUserProfileTile(),
+              TUserProfileTile(onPressed: () => Get.to(() => const ProfileScreen())),
               const SizedBox(height: TSizes.spaceBtwSections),
             ],
           ),
@@ -50,7 +51,16 @@ class SettingScreen extends StatelessWidget {
                   title: 'Account Settings',
                   showActionButton: false,
                 ),
+                const SizedBox(height: TSizes.spaceBtwItems),
 
+
+                  const TSettingsMenuTile(icon: Iconsax.icon, title: 'My Address', subTitle: 'Set shopping delivery address'),
+                  const TSettingsMenuTile(icon: Iconsax.shopping_cart, title: 'My Cart', subTitle: 'Add, remove products and move to checkout'),
+                  const TSettingsMenuTile(icon: Iconsax.bag_tick, title: 'My Orders', subTitle: 'In-progress and Completed Orders'),
+                  const TSettingsMenuTile(icon: Iconsax.bank, title: 'Bank Account', subTitle: 'Withdraw balance to registered bank accounts'),
+                  const TSettingsMenuTile(icon: Iconsax.discount_shape, title: 'My Coupons', subTitle: 'List of all the discounted coupons'),
+                  const TSettingsMenuTile(icon: Iconsax.notification, title: 'Notifications', subTitle: 'Set any kind of notification messages'),
+                  const TSettingsMenuTile(icon: Iconsax.security_card, title: 'Account Privacy', subTitle: 'Manage data usage and connect accounts'),
                 TSettingsMenuTile(
                   icon: Iconsax.safe_home,
                   title: 'My Address',

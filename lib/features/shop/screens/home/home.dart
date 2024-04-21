@@ -1,3 +1,4 @@
+import 'package:e_store/common/widgets/products.cart/product_cards/product_card_vertical.dart';
 import 'package:e_store/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:e_store/features/shop/screens/home/widgets/promo_slider.dart';
 import 'package:e_store/section_heading.dart';
@@ -46,7 +47,8 @@ class HomeScreen extends StatelessWidget {
 
                       ///Categories
                       THomeCategories(),
-                    ])),
+                    ])
+                ),
                 SizedBox(height: TSizes.spaceBtwSections)
               ],
             )),
@@ -79,3 +81,4 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
+
