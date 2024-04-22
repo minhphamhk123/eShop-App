@@ -16,14 +16,14 @@ class TRatingProgressIndicator extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Expanded(flex: 1,child: Text('5', style: Theme.of(context).textTheme.bodyMedium)),
+        Expanded(flex: 1,child: Text(text, style: Theme.of(context).textTheme.bodyMedium)),
         Expanded(
           flex: 11,
           child: SizedBox(
             width: TDeviceUtils.getScreenWidth(context) * 0.8,
             child: LinearProgressIndicator(
               value: value,
-              minHeight: 25,
+              minHeight: 11,
               backgroundColor: TColors.grey,
               borderRadius: BorderRadius.circular(7),
               valueColor: const AlwaysStoppedAnimation(TColors.primary),
