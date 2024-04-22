@@ -1,6 +1,5 @@
 import 'package:e_store/common/widgets/appbar/appbar.dart';
 import 'package:e_store/common/widgets/images/t_rounded_image.dart';
-import 'package:e_store/common/widgets/products.cart/product_cards/product_card_horizontal.dart';
 import 'package:e_store/section_heading.dart';
 import 'package:e_store/utils/constants/sizes.dart';
 import 'package:flutter/cupertino.dart';
@@ -8,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 import '../../../../utils/constants/image_strings.dart';
+import '../../../../common/widgets/products/product_cards/product_card_horizontal.dart';
 
 class SubCategoriesScreen extends StatelessWidget{
   const SubCategoriesScreen({super.key});

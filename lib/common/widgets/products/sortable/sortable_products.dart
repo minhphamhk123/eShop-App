@@ -3,7 +3,7 @@ import 'package:iconsax/iconsax.dart';
 
 import '../../../../utils/constants/sizes.dart';
 import '../../layouts/grid_layout.dart';
-import '../../products.cart/product_cards/product_card_vertical.dart';
+import '../product_cards/product_card_vertical.dart';
 
 class TSortableProducts extends StatelessWidget {
   const TSortableProducts({

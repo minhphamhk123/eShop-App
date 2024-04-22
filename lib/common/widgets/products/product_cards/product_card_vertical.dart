@@ -1,7 +1,7 @@
-import 'package:e_store/utils/constants/colors.dart';
 import 'dart:ui';
 
 import 'package:e_store/features/shop/screens/product_details/product_detail.dart';
+import 'package:e_store/utils/constants/colors.dart';
 import 'package:e_store/utils/helpers/helper_functions.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -110,22 +110,6 @@ class TProductCardVertical extends StatelessWidget {
 
                       ///Price
                       const TProductPriceText(price: '35.5',),
-                ],
-              ),
-            ),
-
-            // Todo: Add Spacer() here to keep height of each Box same in case 1 or case 2 lines of Headings
-            const Spacer(),
-
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                ///Price
-                const Padding(
-                    padding: EdgeInsets.only(left: TSizes.sm),
-                    child: TProductPriceText(
-                      price: '35.5',
-                    )),
 
                       ///Add to cart
                       Container(
@@ -134,9 +118,9 @@ class TProductCardVertical extends StatelessWidget {
                             borderRadius: BorderRadius.only(
                                 topLeft: Radius.circular(TSizes.cardRadiusMd),
                                 bottomRight:
-                                    Radius.circular(TSizes.productImageRadius))),
+                                Radius.circular(TSizes.productImageRadius))),
                         child: const SizedBox(
-                          width: TSizes.iconLg * 1.2,
+                            width: TSizes.iconLg * 1.2,
                             height: TSizes.iconLg * 1.2,
                             child: Center(child: Icon(Iconsax.add, color: TColors.white))),
                       ),
@@ -151,4 +135,3 @@ class TProductCardVertical extends StatelessWidget {
     );
   }
 }
-
