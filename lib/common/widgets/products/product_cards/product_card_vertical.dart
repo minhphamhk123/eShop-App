@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:e_store/common/widgets/texts/t_brand_title_text_with_verified_icon.dart';
 import 'package:e_store/features/shop/screens/product_details/product_detail.dart';
 import 'package:e_store/utils/constants/colors.dart';
 import 'package:e_store/utils/helpers/helper_functions.dart';
@@ -38,16 +39,20 @@ class TProductCardVertical extends StatelessWidget {
         ),
         child: Column(
           children: [
+            /// Thumbnail, WishList Button, Discount Tag
             TRoundedContainer(
               height: 180,
               padding: const EdgeInsets.all(TSizes.sm),
               backgroundColor: dark ? TColors.dark : TColors.light,
               child: Stack(
                 children: [
+                  /// --- Thumbnail Image
                   const TRoundedImage(
                     imageUrl: TImages.productImage1,
                     applyImageRadius: true,
                   ),
+
+                  /// -- Sale Tag
                   Positioned(
                     top: 12,
                     child: TRoundedContainer(
@@ -64,6 +69,8 @@ class TProductCardVertical extends StatelessWidget {
                       ),
                     ),
                   ),
+
+                  /// -- Favourite Icon Button
                   const Positioned(
                       top: 0,
                       right: 0,
@@ -74,60 +81,55 @@ class TProductCardVertical extends StatelessWidget {
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: TSizes.sm),
+            const SizedBox(height: TSizes.spaceBtwItems / 2),
+
+            /// -- Details
+            const Padding(
+              padding: EdgeInsets.only(left: TSizes.sm),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const TProductTitleText(
+                  TProductTitleText(
                     title: 'Green Nike Air Shoes',
                     smallSize: true,
                   ),
-                  const SizedBox(
+                  SizedBox(
                     height: TSizes.spaceBtwItems / 2,
                   ),
-                  Row(
-                    children: [
-                      Text(
-                        'Nike',
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 1,
-                        style: Theme.of(context).textTheme.labelMedium,
-                      ),
-                      const SizedBox(
-                        width: TSizes.xs,
-                      ),
-                      const Icon(
-                        Iconsax.verify5,
-                        color: TColors.primary,
-                        size: TSizes.iconXs,
-                      )
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-
-                      ///Price
-                      const TProductPriceText(price: '35.5',),
-
-                      ///Add to cart
-                      Container(
-                        decoration: const BoxDecoration(
-                            color: TColors.dark,
-                            borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(TSizes.cardRadiusMd),
-                                bottomRight:
-                                Radius.circular(TSizes.productImageRadius))),
-                        child: const SizedBox(
-                            width: TSizes.iconLg * 1.2,
-                            height: TSizes.iconLg * 1.2,
-                            child: Center(child: Icon(Iconsax.add, color: TColors.white))),
-                      ),
-                    ],
-                  ),
+                  TBranchTitleWithVerifiedIcon(title: 'Nike'),
                 ],
               ),
+            ),
+
+            // Todo: Add Spacer() here to keep the height of each Box same in case 1 or 2 lines of Headings
+            const Spacer(),
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                ///Price
+                const Padding(
+                  padding: EdgeInsets.only(left: TSizes.sm),
+                  child: TProductPriceText(
+                    price: '35.5',
+                  ),
+                ),
+
+                ///Add to cart
+                Container(
+                  decoration: const BoxDecoration(
+                      color: TColors.dark,
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(TSizes.cardRadiusMd),
+                          bottomRight:
+                              Radius.circular(TSizes.productImageRadius))),
+                  child: const SizedBox(
+                      width: TSizes.iconLg * 1.2,
+                      height: TSizes.iconLg * 1.2,
+                      child: Center(
+                          child: Icon(Iconsax.add, color: TColors.white))),
+                ),
+              ],
             ),
           ],
         ),

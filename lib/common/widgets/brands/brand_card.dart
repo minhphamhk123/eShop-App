@@ -1,3 +1,5 @@
+import 'package:e_store/common/widgets/texts/t_brand_title_text_with_verified_icon.dart';
+import 'package:e_store/utils/constants/enums.dart';
 import 'package:flutter/material.dart';
 
 import '../../../rounded_container.dart';
@@ -45,7 +47,7 @@ class TBrandCard extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // const TBrandTitleWithVerifiedIcon(title: 'Nike', brandTextSize: TextSizes.large),
+                    const TBranchTitleWithVerifiedIcon(title: 'Nike', brandTextSize: TextSizes.large),
                     Text(
                       '256 products',
                       overflow: TextOverflow.ellipsis,

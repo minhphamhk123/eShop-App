@@ -4,7 +4,7 @@ import 'package:e_store/features/shop/screens/product_details/widgets/product_at
 import 'package:e_store/features/shop/screens/product_details/widgets/product_detail_image_slider.dart';
 import 'package:e_store/features/shop/screens/product_details/widgets/product_meta_data.dart';
 import 'package:e_store/features/shop/screens/product_details/widgets/rating_share_%C6%B0idget.dart';
-import 'package:e_store/section_heading.dart';
+import 'package:e_store/common/widgets/texts/section_heading.dart';
 import 'package:e_store/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
