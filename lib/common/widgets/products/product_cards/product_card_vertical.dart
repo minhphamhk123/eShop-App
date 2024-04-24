@@ -27,9 +27,8 @@ class TProductCardVertical extends StatelessWidget {
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
     return GestureDetector(
-      onTap: () => Get.to(() => const ProductDetailScreeen()),
+      onTap: () => Get.to(() => const ProductDetailScreen()),
       child: Container(
-        width: 180,
         padding: const EdgeInsets.all(1),
         decoration: BoxDecoration(
           boxShadow: [TShadowStyle.verticalProductShadow],
@@ -37,6 +36,7 @@ class TProductCardVertical extends StatelessWidget {
           color: dark ? TColors.darkerGrey : TColors.white,
         ),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             TRoundedContainer(
               height: 180,
@@ -44,9 +44,11 @@ class TProductCardVertical extends StatelessWidget {
               backgroundColor: dark ? TColors.dark : TColors.light,
               child: Stack(
                 children: [
-                  const TRoundedImage(
-                    imageUrl: TImages.productImage1,
-                    applyImageRadius: true,
+                  const Center(
+                    child: TRoundedImage(
+                      imageUrl: TImages.productImage1,
+                      applyImageRadius: true,
+                    ),
                   ),
                   Positioned(
                     top: 12,
@@ -104,10 +106,10 @@ class TProductCardVertical extends StatelessWidget {
                       )
                     ],
                   ),
+
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-
                       ///Price
                       const TProductPriceText(price: '35.5',),
 

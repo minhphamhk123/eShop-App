@@ -6,12 +6,16 @@ import 'package:e_store/features/shop/screens/product_details/widgets/rating_sha
 import 'package:e_store/section_heading.dart';
 import 'package:e_store/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:readmore/readmore.dart';
 
 import '../../../../utils/constants/sizes.dart';
+import '../porduct_reviews/product_reviews.dart';
 
-class ProductDetailScreeen extends StatelessWidget {
-  const ProductDetailScreeen({super.key});
+class ProductDetailScreen extends StatelessWidget {
+  const ProductDetailScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,11 +26,11 @@ class ProductDetailScreeen extends StatelessWidget {
       child: Column(
         children: [
           /// 1 - Product Image Slider
-          TProductImageSlider(),
+          const TProductImageSlider(),
 
           /// 2 - Product Details
           Padding(
-            padding: EdgeInsets.only(
+            padding: const EdgeInsets.only(
                 right: TSizes.defaultSpace,
                 left: TSizes.defaultSpace,
                 bottom: TSizes.defaultSpace),
@@ -84,6 +88,10 @@ class ProductDetailScreeen extends StatelessWidget {
                 const SizedBox(
                   height: TSizes.spaceBtwSections,
                 ),
+
+                /// - Reviews
+                IconButton(icon: const Icon(Iconsax.arrow_right_3, size: 18),
+                  onPressed: () => Get.to(() => const ProductReviewsScreen()))
               ],
             ),
           )
