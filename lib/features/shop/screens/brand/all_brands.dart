@@ -1,7 +1,7 @@
 import 'package:e_store/common/widgets/appbar/appbar.dart';
 import 'package:e_store/common/widgets/layouts/grid_layout.dart';
 import 'package:e_store/common/widgets/products/sortable/sortable_products.dart';
-import 'package:e_store/section_heading.dart';
+import 'package:e_store/common/widgets/texts/section_heading.dart';
 import 'package:e_store/utils/constants/sizes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

@@ -1,7 +1,7 @@
 /// LIST OF ENUMS
 /// They cannot be created inside a class
 
-enum TextSize {small, medium, large}
+enum TextSizes {small, medium, large}
 
 enum OrderStatus { processing, shipped, delivered }
 

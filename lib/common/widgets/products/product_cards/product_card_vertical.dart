@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:e_store/common/widgets/texts/t_brand_title_text_with_verified_icon.dart';
 import 'package:e_store/features/shop/screens/product_details/product_detail.dart';
 import 'package:e_store/utils/constants/colors.dart';
 import 'package:e_store/utils/helpers/helper_functions.dart';
@@ -38,6 +39,7 @@ class TProductCardVertical extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
+            /// Thumbnail, WishList Button, Discount Tag
             TRoundedContainer(
               height: 180,
               padding: const EdgeInsets.all(TSizes.sm),
@@ -50,6 +52,8 @@ class TProductCardVertical extends StatelessWidget {
                       applyImageRadius: true,
                     ),
                   ),
+
+                  /// -- Sale Tag
                   Positioned(
                     top: 12,
                     child: TRoundedContainer(
@@ -66,6 +70,8 @@ class TProductCardVertical extends StatelessWidget {
                       ),
                     ),
                   ),
+
+                  /// -- Favourite Icon Button
                   const Positioned(
                       top: 0,
                       right: 0,
@@ -76,16 +82,19 @@ class TProductCardVertical extends StatelessWidget {
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: TSizes.sm),
+            const SizedBox(height: TSizes.spaceBtwItems / 2),
+
+            /// -- Details
+            const Padding(
+              padding: EdgeInsets.only(left: TSizes.sm),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const TProductTitleText(
+                  TProductTitleText(
                     title: 'Green Nike Air Shoes',
                     smallSize: true,
                   ),
-                  const SizedBox(
+                  SizedBox(
                     height: TSizes.spaceBtwItems / 2,
                   ),
                   Row(
@@ -113,23 +122,32 @@ class TProductCardVertical extends StatelessWidget {
                       ///Price
                       const TProductPriceText(price: '35.5',),
 
-                      ///Add to cart
-                      Container(
-                        decoration: const BoxDecoration(
-                            color: TColors.dark,
-                            borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(TSizes.cardRadiusMd),
-                                bottomRight:
-                                Radius.circular(TSizes.productImageRadius))),
-                        child: const SizedBox(
-                            width: TSizes.iconLg * 1.2,
-                            height: TSizes.iconLg * 1.2,
-                            child: Center(child: Icon(Iconsax.add, color: TColors.white))),
-                      ),
-                    ],
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                ///Price
+                const Padding(
+                  padding: EdgeInsets.only(left: TSizes.sm),
+                  child: TProductPriceText(
+                    price: '35.5',
                   ),
-                ],
-              ),
+                ),
+
+                ///Add to cart
+                Container(
+                  decoration: const BoxDecoration(
+                      color: TColors.dark,
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(TSizes.cardRadiusMd),
+                          bottomRight:
+                              Radius.circular(TSizes.productImageRadius))),
+                  child: const SizedBox(
+                      width: TSizes.iconLg * 1.2,
+                      height: TSizes.iconLg * 1.2,
+                      child: Center(
+                          child: Icon(Iconsax.add, color: TColors.white))),
+                ),
+              ],
             ),
           ],
         ),

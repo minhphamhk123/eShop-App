@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:e_store/common/widgets/texts/product_price_text.dart';
 import 'package:e_store/common/widgets/texts/product_title_text.dart';
 import 'package:e_store/rounded_container.dart';
-import 'package:e_store/section_heading.dart';
+import 'package:e_store/common/widgets/texts/section_heading.dart';
 import 'package:e_store/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 

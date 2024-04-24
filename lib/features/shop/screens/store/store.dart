@@ -3,7 +3,7 @@ import 'package:e_store/common/widgets/appbar/tabbar.dart';
 import 'package:e_store/common/widgets/custom_shapes/containers/search_container.dart';
 import 'package:e_store/common/widgets/layouts/grid_layout.dart';
 import 'package:e_store/features/shop/screens/store/widgets/category_tab.dart';
-import 'package:e_store/section_heading.dart';
+import 'package:e_store/common/widgets/texts/section_heading.dart';
 import 'package:e_store/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 
@@ -24,9 +24,7 @@ class StoreScreen extends StatelessWidget {
         appBar: TAppBar(
           title:
               Text('Store', style: Theme.of(context).textTheme.headlineMedium),
-          actions: [
-            TCartCounterIcon(onPressed: (){})
-          ],
+          actions: [TCartCounterIcon(onPressed: () {})],
         ),
         body: NestedScrollView(
             headerSliverBuilder: (_, innerBoxIsScrolled) {
@@ -66,8 +64,9 @@ class StoreScreen extends StatelessWidget {
                             itemCount: 4,
                             mainAxisExtent: 80,
                             itemBuilder: (_, index) {
-
-                              return const TBrandCard(showBorder: false,);
+                              return const TBrandCard(
+                                showBorder: false,
+                              );
                             })
                       ],
                     ),
@@ -83,7 +82,7 @@ class StoreScreen extends StatelessWidget {
                       Tab(child: Text('Cosmetics')),
                     ],
                   ),
-                )
+                ),
               ];
             },
 
@@ -101,4 +100,3 @@ class StoreScreen extends StatelessWidget {
     );
   }
 }
-

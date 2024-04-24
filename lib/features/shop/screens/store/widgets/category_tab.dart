@@ -1,5 +1,5 @@
 import 'package:e_store/common/widgets/layouts/grid_layout.dart';
-import 'package:e_store/section_heading.dart';
+import 'package:e_store/common/widgets/texts/section_heading.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../common/widgets/brands/brand_show_case.dart';

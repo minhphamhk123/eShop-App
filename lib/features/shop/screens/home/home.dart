@@ -1,6 +1,6 @@
 import 'package:e_store/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:e_store/features/shop/screens/home/widgets/promo_slider.dart';
-import 'package:e_store/section_heading.dart';
+import 'package:e_store/common/widgets/texts/section_heading.dart';
 import 'package:e_store/utils/constants/image_strings.dart';
 import 'package:e_store/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
@@ -46,8 +46,7 @@ class HomeScreen extends StatelessWidget {
 
                       ///Categories
                       THomeCategories(),
-                    ])
-                ),
+                    ])),
                 SizedBox(height: TSizes.spaceBtwSections)
               ],
             )),
@@ -67,6 +66,12 @@ class HomeScreen extends StatelessWidget {
                     const SizedBox(
                       height: TSizes.spaceBtwSections,
                     ),
+
+                    /// Heading
+                    TSectionHeading(
+                        title: 'Popular Products', onPressed: () {}),
+                    const SizedBox(height: TSizes.spaceBtwItems),
+
                     TGridLayout(
                       itemCount: 4,
                       itemBuilder: (_, index) => const TProductCardVertical(),
@@ -80,4 +85,3 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-
