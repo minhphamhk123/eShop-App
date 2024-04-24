@@ -12,9 +12,10 @@ import 'package:iconsax/iconsax.dart';
 import 'package:readmore/readmore.dart';
 
 import '../../../../utils/constants/sizes.dart';
+import '../porduct_reviews/product_reviews.dart';
 
-class ProductDetailScreeen extends StatelessWidget {
-  const ProductDetailScreeen({super.key});
+class ProductDetailScreen extends StatelessWidget {
+  const ProductDetailScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -97,9 +98,15 @@ class ProductDetailScreeen extends StatelessWidget {
                     ),
                   ],
                 ),
-              )
-            ],
-          ),
-        ));
+
+                /// - Reviews
+                IconButton(icon: const Icon(Iconsax.arrow_right_3, size: 18),
+                  onPressed: () => Get.to(() => const ProductReviewsScreen()))
+              ],
+            ),
+          )
+        ],
+      ),
+    ));
   }
 }

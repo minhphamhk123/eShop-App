@@ -17,7 +17,8 @@ class TUserProfileTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: TCircularImage(
+      onTap: onPressed,
+      leading: const TCircularImage(
         image: TImages.clothIcon,
         width: 50,
         height: 50,

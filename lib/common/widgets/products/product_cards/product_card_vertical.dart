@@ -28,9 +28,8 @@ class TProductCardVertical extends StatelessWidget {
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
     return GestureDetector(
-      onTap: () => Get.to(() => const ProductDetailScreeen()),
+      onTap: () => Get.to(() => const ProductDetailScreen()),
       child: Container(
-        width: 180,
         padding: const EdgeInsets.all(1),
         decoration: BoxDecoration(
           boxShadow: [TShadowStyle.verticalProductShadow],
@@ -38,6 +37,7 @@ class TProductCardVertical extends StatelessWidget {
           color: dark ? TColors.darkerGrey : TColors.white,
         ),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             /// Thumbnail, WishList Button, Discount Tag
             TRoundedContainer(
@@ -46,10 +46,11 @@ class TProductCardVertical extends StatelessWidget {
               backgroundColor: dark ? TColors.dark : TColors.light,
               child: Stack(
                 children: [
-                  /// --- Thumbnail Image
-                  const TRoundedImage(
-                    imageUrl: TImages.productImage1,
-                    applyImageRadius: true,
+                  const Center(
+                    child: TRoundedImage(
+                      imageUrl: TImages.productImage1,
+                      applyImageRadius: true,
+                    ),
                   ),
 
                   /// -- Sale Tag
@@ -96,13 +97,30 @@ class TProductCardVertical extends StatelessWidget {
                   SizedBox(
                     height: TSizes.spaceBtwItems / 2,
                   ),
-                  TBranchTitleWithVerifiedIcon(title: 'Nike'),
-                ],
-              ),
-            ),
+                  Row(
+                    children: [
+                      Text(
+                        'Nike',
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 1,
+                        style: Theme.of(context).textTheme.labelMedium,
+                      ),
+                      const SizedBox(
+                        width: TSizes.xs,
+                      ),
+                      const Icon(
+                        Iconsax.verify5,
+                        color: TColors.primary,
+                        size: TSizes.iconXs,
+                      )
+                    ],
+                  ),
 
-            // Todo: Add Spacer() here to keep the height of each Box same in case 1 or 2 lines of Headings
-            const Spacer(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      ///Price
+                      const TProductPriceText(price: '35.5',),
 
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
