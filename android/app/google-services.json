@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "430472490040",
+    "project_id": "kiotminimanager",
+    "storage_bucket": "kiotminimanager.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:430472490040:android:e7b229068b3204b72ccacd",
+        "android_client_info": {
+          "package_name": "com.example.e_store"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "430472490040-vnsc3tnrbjd8u80p5p1cg1t2fnmihmat.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.e_store",
+            "certificate_hash": "20578a4c949539a8985b266dae1bce3b2425735b"
+          }
+        },
+        {
+          "client_id": "430472490040-fajsr5pusees2im5kaes5mtlt487e4tj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEar9CEsOeh-yiyVSnQSUfBr0gBa3Op0M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "430472490040-fajsr5pusees2im5kaes5mtlt487e4tj.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "430472490040-enpipb2qets4ovi0f5t6kj24hm5ijac9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.eStore"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
