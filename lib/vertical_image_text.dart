@@ -1,4 +1,5 @@
 import 'package:e_store/utils/constants/colors.dart';
+import 'package:e_store/utils/constants/image_strings.dart';
 import 'package:e_store/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 
@@ -45,7 +46,7 @@ class TVerticalImageText extends StatelessWidget{
             const SizedBox(height: TSizes.spaceBtwItems/2),
             SizedBox(
               width: 55,
-              child: Text(title,style: Theme.of(context).textTheme.labelMedium!, maxLines: 1,overflow: TextOverflow.ellipsis,
+              child: Text(title,style: Theme.of(context).textTheme.labelMedium!.apply(color: TColors.white), maxLines: 1,overflow: TextOverflow.ellipsis,
               ),
             )
           ],
