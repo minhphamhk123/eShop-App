@@ -61,6 +61,7 @@ class SettingScreen extends StatelessWidget {
                   subTitle: 'Set shopping delivery address',
                   onTap: () => Get.to(() => const UserAddressScreen()),
                 ),
+                const TSettingsMenuTile(
                     icon: Iconsax.shopping_cart,
                     title: 'My Cart',
                     subTitle: 'Add, remove products and move to checkout'),
