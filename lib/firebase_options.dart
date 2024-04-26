@@ -63,6 +63,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '430472490040',
     projectId: 'kiotminimanager',
     storageBucket: 'kiotminimanager.appspot.com',
+    androidClientId: '430472490040-vnsc3tnrbjd8u80p5p1cg1t2fnmihmat.apps.googleusercontent.com',
+    iosClientId: '430472490040-enpipb2qets4ovi0f5t6kj24hm5ijac9.apps.googleusercontent.com',
     iosBundleId: 'com.example.eStore',
   );
 

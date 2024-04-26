@@ -14,18 +14,21 @@ dependencies:
     sdk: flutter
   
   cupertino_icons: ^1.0.6
-  iconsax: ^0.0.8
+
   # Utility Packages
-  get: ^4.6.6
   http: ^1.2.1
   intl: ^0.19.0
   logger: ^2.1.0
   url_launcher: ^6.2.5
-  get_storage: ^2.1.1
   flutter_native_splash: ^2.4.0
   smooth_page_indicator: ^1.1.0
 
   # Icons
+  iconsax: ^0.0.8
+
+  # State Management
+  get: ^4.6.6
+  get_storage: ^2.1.1
 
   # Product Specific
   readmore: ^3.0.0
