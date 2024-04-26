@@ -100,12 +100,6 @@ class ProductDetailScreen extends StatelessWidget {
                   const SizedBox(
                     height: TSizes.spaceBtwSections,
                   ),
-
-                  /// - Reviews
-                  IconButton(
-                      icon: const Icon(Iconsax.arrow_right_3, size: 18),
-                      onPressed: () =>
-                          Get.to(() => const ProductReviewsScreen())),
                 ],
               ),
             ),
