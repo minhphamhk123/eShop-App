@@ -11,7 +11,7 @@ final Widget? child;
   @override
   Widget build(BuildContext context) {
     return ClipPath(
-      clipper: TCustomCurvedEdges(),
+      //clipper: TCustomCurvedEdges(),
       child: child
     );
   }
