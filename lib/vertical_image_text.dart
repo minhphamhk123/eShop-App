@@ -21,7 +21,7 @@ class TVerticalImageText extends StatelessWidget{
   @override
   Widget build(BuildContext context)
   {
-    //final dark = THelperFunctions.isDarkmode(context);
+    //final dark = THelperFunctions.isDarkode(context);
 
     return GestureDetector(
       onTap: onTap,

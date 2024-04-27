@@ -3,6 +3,8 @@ import 'package:e_store/common/widgets/products/sortable/sortable_products.dart'
 import 'package:e_store/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../common/widgets/brands/brand_card.dart';
+
 class BrandProducts extends StatelessWidget{
   const BrandProducts({super.key});
 
@@ -16,7 +18,7 @@ class BrandProducts extends StatelessWidget{
           child: Column(
             children: [
               /// Brand Detail
-              //TBrandCard(showBorder: true),
+              TBrandCard(showBorder: true),
               SizedBox(height: TSizes.spaceBtwSections),
               TSortableProducts(),
             ],
