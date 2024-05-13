@@ -1,4 +1,5 @@
 import 'package:e_store/data/network_manager.dart';
+import 'package:e_store/data/repositories/authentication/authentication_repository.dart';
 import 'package:e_store/utils/constants/image_strings.dart';
 import 'package:e_store/utils/popups/full_screen_loader.dart';
 import 'package:flutter/cupertino.dart';
@@ -6,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../utils/popups/loaders.dart';
+import '../../../personalization/models/user_model.dart';
 
 class SignupController extends GetxController {
   static SignupController get instance => Get.find();
@@ -21,16 +23,26 @@ class SignupController extends GetxController {
   final phoneNumber = TextEditingController(); // Controller for phone number input
   GlobalKey<FormState> signupFormKey = GlobalKey<FormState>(); // Form key for form validation
 
+  /// -- TEST
+  Future<void> test() async {
+    final userCredential = await AuthenticationRepository.instance.registerWithEmailAndPassword(email.text.trim(), password.text.trim(), username.text.trim());
+    print("test: " + userCredential);
+  }
+
+
   /// -- SIGNUP
-  Future<void> signup() async {
+  void signup() async {
     try {
       // Start Loading
       TFullScreenLoader.openLoadingDialog('We are processing your information...', TImages.furnitureIcon);
+
       // Check Internet Connect
       final isConnected = await NetworkManager.instance.isConnected();
       if (!isConnected) return;
+
       // Form Validation
       if (!signupFormKey.currentState!.validate()) return;
+
       // Privacy Policy Check
       if (!privacyPolicy.value) {
         TLoaders.warningSnackBar(
@@ -38,9 +50,20 @@ class SignupController extends GetxController {
             message: 'In order to create account, you must have to read and accept the Privacy Policy & Term of Use.');
         return;
       }
+
       // Register user and save user data in the backend
+      final userCredential = await AuthenticationRepository.instance.registerWithEmailAndPassword(email.text.trim(), password.text.trim(), username.text.trim());
 
       // Save Authenticated user data
+      final newUser = UserModel(
+        id: '',
+        firstName: firstName.text.trim(),
+        lastName: lastName.text.trim(),
+        username: username.text.trim(),
+        email: email.text.trim(),
+        phoneNumber: phoneNumber.text.trim(),
+        profilePicture: '',
+      );
 
       // Show Success Message
 
