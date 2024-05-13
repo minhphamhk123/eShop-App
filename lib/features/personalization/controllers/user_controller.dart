@@ -21,7 +21,8 @@ class UserController extends GetxController {
         //   firstName: nameParts[0],
         //   lastName: nameParts.length > 1 ? nameParts.sublist(1).join() : '',
         //   username: username,
-        //   email: userCredentials.user!.email ?? '',
+        //   email: userCredentials.user!.email ?? ''
+        //
         //   phoneNumber: userCredentials.user!.phoneNumber ?? '',
         //   profilePicture: userCredentials.user!.photoURL ?? '',
         // );
@@ -30,10 +31,10 @@ class UserController extends GetxController {
         // await userRepository.saveUserRecord(user);
       }
     } catch (e) {
-      // TLoaders.warningSnackBar(
-      //   title: 'Data not save',
-      //   message: 'Something went wrong while saving your information. You can re-save your data in your Profile.'
-      // );
+      TLoaders.warningSnackBar(
+        title: 'Data not save',
+        message: 'Something went wrong while saving your information. You can re-save your data in your Profile.'
+      );
     }
   }
 }

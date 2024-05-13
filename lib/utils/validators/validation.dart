@@ -1,5 +1,13 @@
 class TValidator {
-  static String? validateEnail(String? value) {
+  static String? validateEmptyText(String? filedName, String? value) {
+    if(value == null || value.isEmpty) {
+      return '$filedName is required';
+    }
+
+    return null;
+  }
+
+  static String? validateEmail(String? value) {
     if (value == null || value.isEmpty) {
       return 'Email is required.';
     }

@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:e_store/data/repositories/authentication/authentication_repository.dart';
 import 'package:e_store/features/personalization/controllers/user_controller.dart';
 import 'package:e_store/utils/constants/image_strings.dart';
@@ -10,7 +12,6 @@ import '../../../../utils/popups/full_screen_loader.dart';
 import '../../../../utils/popups/loaders.dart';
 
 class LoginController extends GetxController {
-
   /// Variable
   final rememberMe = false.obs;
   final hidePassword = true.obs;
@@ -20,44 +21,36 @@ class LoginController extends GetxController {
   GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
   final userController = Get.put(UserController());
 
-
   @override
   void onInit() {
+    email.text = 'test@gmail.com';
+    password.text = 'admin123';
     email.text = localStorage.read('REMEMBER_ME_EMAIL');
     password.text = localStorage.read('REMEMBER_ME_PASSWORD');
     super.onInit();
   }
 
   /// -- Email and Password SignIn
-  Future<void> emailAndPasswordSignIn() async {
-    // try {
-    //   // Start Loading
-    //   TFullScreenLoader.openLoadingDiaLog(
-    //       'Logging you in....', TImages.dancerAnimation);
-    //
-    //   // Check Internet Connectivity
-    //   final isConnected = await NetWorkManager.instance.isConnected();
-    //   if (!isConnected) {
-    //     TFullScreenLoader.stopLoading();
-    //     return;
-    //   }
-  }
+
 
   /// -- Google SignIn Authentication
   Future<void> googleSignIn() async {
     try {
       // Start Loading
+      TFullScreenLoader.openLoadingDialog(
+          'Logging you in....', TImages.onBoardingImage3);
       // TFullScreenLoader.openLoadingDialog('Logging you in....', TImages.dancerAnimation);
 
       // Check Internet Connectivity
       final isConnected = await NetworkManager.instance.isConnected();
-      if(!isConnected) {
+      if (!isConnected) {
         TFullScreenLoader.stopLoading();
         return;
       }
 
       // Google Authentication
-      final userCredentials = await AuthenticationRepository.instance.signInWithGoogle();
+      final userCredentials =
+          await AuthenticationRepository.instance.signInWithGoogle();
 
       // Save User Record
       await userController.saveUserRecord(userCredentials);
@@ -67,9 +60,7 @@ class LoginController extends GetxController {
     } catch (e) {
       // Remove Loader
       TFullScreenLoader.stopLoading();
-      // TLoaders.errorSnackBar(title: 'Oh Snap', message: e.toString());
+      TLoaders.errorSnackBar(title: 'Oh Snap haha', message: e.toString());
     }
   }
 }
-
-
