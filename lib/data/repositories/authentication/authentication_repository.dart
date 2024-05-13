@@ -11,6 +11,10 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../../features/authentication/screens/login/login.dart';
 import '../../../features/authentication/screens/onboarding/onboarding.dart';
+import '../../../utils/exceptions/firebase_auth_exceptions.dart';
+import '../../../utils/exceptions/firebase_exceptions.dart';
+import '../../../utils/exceptions/format_exceptions.dart';
+import '../../../utils/exceptions/platform_exceptions.dart';
 
 class AuthenticationRepository extends GetxController {
   static AuthenticationRepository get instance => Get.find();
@@ -53,38 +57,38 @@ class AuthenticationRepository extends GetxController {
 /* --------------------------------Email & Password sign-in------------------------------*/
 
   /// [EmailAuthentication] - LOGIN
-  // Future<UserCredential> loginWithEmailAndPassword(String email, String password) async {
-  //   try {
-  //     return await _auth.signInWithEmailAndPassword(email: email, password: password);
-  //   } on FirebaseAuthException catch (e) {
-  //     throw TFirebaseAuthException(e.code).message;
-  //   } on FirebaseAuthException catch (e) {
-  //     throw TFirebaseException(e.code).message;
-  //   } on FormatException catch (_) {
-  //     throw const TFormatException();
-  //   } on PlatformException catch (e) {
-  //     throw TPlatformException(e.code).message;
-  //   } catch (e) {
-  //     throw 'Something went wrong. Please try again';
-  //   }
-  // }
+  Future<UserCredential> loginWithEmailAndPassword(String email, String password) async {
+    try {
+      return await _auth.signInWithEmailAndPassword(email: email, password: password);
+    } on FirebaseAuthException catch (e) {
+      throw TFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const TFormatException();
+    } on PlatformException catch (e) {
+      throw TPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Please try again';
+    }
+  }
 
   /// [EmailAuthentication] - REGISTER
-  //   Future<UserCredential> registerWithEmailAndPasswork(String email, String password) async {
-  //       try {
-  //         return await _auth.signInWithEmailAndPassword(email: email, password: password);
-  //       } on FirebaseAuthException catch (e) {
-  //         throw TFirebaseAuthException(e.code).message;
-  //       } on FirebaseAuthException catch (e) {
-  //         throw TFirebaseException(e.code).message;
-  //       } on FormatException catch (_) {
-  //         throw const TFormatException();
-  //       } on PlatformException catch (e) {
-  //         throw TPlatformException(e.code).message;
-  //       } catch (e) {
-  //         throw 'Something went wrong. Please try again';
-  //       }
-  //   }
+    Future<UserCredential> registerWithEmailAndPassword(String email, String password) async {
+        try {
+          return await _auth.signInWithEmailAndPassword(email: email, password: password);
+        } on FirebaseAuthException catch (e) {
+          throw TFirebaseAuthException(e.code).message;
+        } on FirebaseException catch (e) {
+          throw TFirebaseException(e.code).message;
+        } on FormatException catch (_) {
+          throw const TFormatException();
+        } on PlatformException catch (e) {
+          throw TPlatformException(e.code).message;
+        } catch (e) {
+          throw 'Something went wrong. Please try again';
+        }
+    }
 
   /// [GoogleAuthentication] -GOOGLE
   Future<UserCredential?> signInWithGoogle() async {
@@ -104,14 +108,14 @@ class AuthenticationRepository extends GetxController {
 
       // Once signed in, return the UserCredential
       return await _auth.signInWithCredential(credentials);
-    // } on FirebaseAuthException catch (e) {
-    //   throw TFirebaseAuthException(e.code).message;
-    // } on FirebaseAuthException catch (e) {
-    //   throw TFirebaseException(e.code).message;
-    // } on FormatException catch (_) {
-    //   throw const TFormatException();
-    // } on PlatformException catch (e) {
-    //   throw TPlatformException(e.code).message;
+    } on FirebaseAuthException catch (e) {
+      throw TFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const TFormatException();
+    } on PlatformException catch (e) {
+      throw TPlatformException(e.code).message;
     } catch (e) {
       if (kDebugMode) print('Something went wrong: $e');
       return null;

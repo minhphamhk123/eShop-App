@@ -36,7 +36,7 @@ class LoginController extends GetxController {
     //       'Logging you in....', TImages.dancerAnimation);
     //
     //   // Check Internet Connectivity
-    //   final isConnected = await NetWorkManager.instance.isConected();
+    //   final isConnected = await NetWorkManager.instance.isConnected();
     //   if (!isConnected) {
     //     TFullScreenLoader.stopLoading();
     //     return;
