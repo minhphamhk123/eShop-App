@@ -31,7 +31,7 @@ class TImages {
   static const String kenwoodLogo = "assets/icons/brands/kenwood-logo.png";
   static const String hermanMillerLogo = "assets/icons/brands/herman-miller-logo.png";
   static const String ikeaLogo = "assets/icons/brands/ikea_logo.png";
-  static const String acerlogo = "assets/icons/brands/acer_logo.png";
+  static const String acerLogo = "assets/icons/brands/acer_logo.png";
 
 
   // -- onBoarding
@@ -55,6 +55,7 @@ class TImages {
       "assets/images/animations/sammy-line-man-receives-a-mail.png";
   static const String verifyIllustration =
       "assets/images/animations/sammy-line-travel-backpack-with-passport-and-air-ticket.gif";
+  static const String loaderAnimation = "assets/images/animations/loader-animation.json";
 
   // -- Banners
   static const String promoBanner1 = "assets/images/banners/banner_1.jpg";

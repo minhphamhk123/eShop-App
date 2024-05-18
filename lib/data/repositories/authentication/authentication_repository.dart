@@ -10,13 +10,14 @@ import 'package:http/http.dart' as http;
 
 import '../../../features/authentication/screens/login/login.dart';
 import '../../../features/authentication/screens/onboarding/onboarding.dart';
+import '../../../socket_service.dart';
 
 class AuthenticationRepository extends GetxController {
   static AuthenticationRepository get instance => Get.find();
 
   /// Variables
   final deviceStorage = GetStorage();
-  var client = http.Client();
+  // var client = http.Client();
 
   /// Called from main.dart on app launch
   @override
@@ -27,8 +28,10 @@ class AuthenticationRepository extends GetxController {
     screenRedirect();
   }
 
-
   screenRedirect() async {
+
+
+
     // Local storage
     if (kDebugMode) {
       print('=============== GET STORAGE Auth Repo ====================');
@@ -36,25 +39,51 @@ class AuthenticationRepository extends GetxController {
     }
 
     deviceStorage.writeIfNull('IsFirstTime', true);
-    deviceStorage.read('IsFirstTime') != true ? Get.offAll(() => const LoginScreen()) : Get.offAll(const OnBoardingScreen());
+    deviceStorage.read('IsFirstTime') != true
+        ? Get.offAll(() => const LoginScreen())
+        : Get.offAll(const OnBoardingScreen());
+  }
+
+  Future<String> handleResponse(String responseString) async {
+    Map<String, dynamic> responseMap = jsonDecode(responseString);
+
+    if (responseMap['status'] == 'PENDING') {
+      String userId = responseMap['data']['user'];
+      print('Extracted user ID: $userId');
+      return userId;
+      // Use the user ID for further processing, display, etc.
+    } else {
+      print('Unexpected response status: ${responseMap['status']}');
+      return '';
+    }
   }
 
   /* --------------------------------Email & Password sign-in------------------------------*/
 
   /// [EmailAuthentication] - REGISTER
-  Future<String> registerWithEmailAndPassword(String email, String password, String username) async{
-    var url = Uri.http('localhost:8080', '/api/auth/signup');
-    print(url);
+  Future<String> registerWithEmailAndPassword(
+      String email, String password, String username, String firstName, String lastName, String phoneNumber) async {
+    var url = Uri.http('192.168.1.3:8080', '/api/auth/signup');
     try {
-      http.Response res = await http.post(url, body: jsonEncode({
-        'email': email,
-        'password': password,
-        'username': username,
-      }));
-      return res.body;
-    } catch(e) {
+      http.Response res = await http.post(url,
+          body: jsonEncode({
+            'email': email,
+            'password': password,
+            'username': username,
+            'firstName': firstName,
+            'lastName': lastName,
+            'phoneNumber': phoneNumber,
+          }),
+          headers: {'Content-Type': 'application/json'});
+      final test = res.body;
+      print(test);
+      return await handleResponse(test);
+    } catch (e) {
+      print(e);
       throw 'Something went wrong. Please try again';
     }
   }
+
+  /// [EmailAuthentication] - SET USER
 
 }
