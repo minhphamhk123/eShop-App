@@ -36,6 +36,7 @@ class VerifyEmailController extends GetxController {
         _socketService.verifyStatus.value == 'false') {
       TLoaders.successSnackBar(title: 'Please verify your email');
     } else if (_socketService.verifyStatus.value == 'true') {
+      _socketService.disconnect();
       Get.off(
         () => SuccessScreen(
           image: TImages.loaderAnimation,

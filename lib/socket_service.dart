@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 import 'package:flutter/foundation.dart';
 
@@ -7,7 +9,7 @@ class SocketService {
 
   void connect(String userId) {
     print('isConnecting');
-    _socket = IO.io('http://192.168.1.3:3000', <String, dynamic>{
+    _socket = IO.io('http://192.168.1.2:8080', <String, dynamic>{
       'transports': ['websocket'],
       'autoConnect': false,
       'query': {'userId': userId},
@@ -25,9 +27,33 @@ class SocketService {
 
     // Lắng nghe sự kiện verifiedStatus
     _socket.on('verifiedStatus', (data) {
-      print('Verified Status: $data');
+      Map<String, dynamic> jsonData;
+
+      // Kiểm tra kiểu dữ liệu và chuyển đổi nếu cần thiết
+      if (data is String) {
+        try {
+          // Chuyển đổi chuỗi JSON thành Map
+          jsonData = json.decode(data) as Map<String, dynamic>;
+        } catch (e) {
+          print('Error decoding JSON: $e');
+          return; // Thoát khỏi hàm nếu không thể chuyển đổi dữ liệu
+        }
+      } else if (data is Map<String, dynamic>) {
+        // Nếu data đã là Map, gán nó trực tiếp
+        jsonData = data;
+      } else {
+        print('Unsupported data type');
+        return; // Thoát khỏi hàm nếu dữ liệu không được hỗ trợ
+      }
+
+      // Lấy giá trị của trường 'verified'
+      var verifiedStatus = jsonData['verified'].toString();
+
+      print('Verified Status: $verifiedStatus test');
+      print('Verified Status: $jsonData data');
+
       // Xử lý cập nhật trạng thái verified
-      verifyStatus.value = data; // Cập nhật trạng thái verifyStatus
+      verifyStatus.value = verifiedStatus;
     });
 
     // Kết nối tới server

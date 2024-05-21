@@ -63,7 +63,7 @@ class AuthenticationRepository extends GetxController {
   /// [EmailAuthentication] - REGISTER
   Future<String> registerWithEmailAndPassword(
       String email, String password, String username, String firstName, String lastName, String phoneNumber) async {
-    var url = Uri.http('192.168.1.3:8080', '/api/auth/signup');
+    var url = Uri.http('192.168.1.2:8080', '/api/auth/signup');
     try {
       http.Response res = await http.post(url,
           body: jsonEncode({
