@@ -52,6 +52,7 @@ class UserModel {
 
   Map<String, dynamic> toJson() {
     return {
+      'Id': id,
       'FirstName': firstName,
       'LastName': lastName,
       'Username': username,
@@ -61,5 +62,14 @@ class UserModel {
     };
   }
 
-
+  // Chuyển đổi Map sang UserModel
+  factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
+        id: json['Id'],
+        username: json['Username'],
+        email: json['Email'],
+        firstName: json['FirstName'],
+        lastName: json['LastName'],
+        phoneNumber: json['PhoneNumber'],
+        profilePicture: json['ProfilePicture'],
+      );
 }

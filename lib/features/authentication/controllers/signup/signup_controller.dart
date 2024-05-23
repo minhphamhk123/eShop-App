@@ -1,9 +1,12 @@
+import 'dart:convert';
+
 import 'package:e_store/data/network_manager.dart';
 import 'package:e_store/data/repositories/authentication/authentication_repository.dart';
 import 'package:e_store/features/authentication/screens/signup/verify_email.dart';
 import 'package:e_store/utils/constants/image_strings.dart';
 import 'package:e_store/utils/popups/full_screen_loader.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
@@ -26,7 +29,8 @@ class SignupController extends GetxController {
   GlobalKey<FormState> signupFormKey =
       GlobalKey<FormState>(); // Form key for form validation
 
-  final user = Rxn<UserModel>();
+  final storage = const FlutterSecureStorage();
+
 
   /// -- SIGNUP
   void signup() async {
@@ -82,8 +86,8 @@ class SignupController extends GetxController {
           profilePicture: '',
         );
 
-      // Update the user state
-      user.value = newUser;
+      String userJson = json.encode(newUser.toJson());
+      await storage.write(key: 'user', value: userJson);
 
       // Remove Loader
       TFullScreenLoader.stopLoading();

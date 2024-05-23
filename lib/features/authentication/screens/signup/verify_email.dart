@@ -1,4 +1,5 @@
 import 'package:e_store/common/widgets/success_screen/success_screen.dart';
+import 'package:e_store/data/repositories/authentication/authentication_repository.dart';
 import 'package:e_store/features/authentication/controllers/signup/verify_email_controller.dart';
 import 'package:e_store/features/authentication/screens/login/login.dart';
 import 'package:e_store/utils/helpers/helper_functions.dart';
@@ -23,7 +24,7 @@ class VerifyScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        actions: [IconButton(onPressed: () => Get.offAll(() => const LoginScreen()), icon: const Icon(CupertinoIcons.clear)),],
+        actions: [IconButton(onPressed: () => Get.offAll(() => AuthenticationRepository.instance.logout()), icon: const Icon(CupertinoIcons.clear)),],
       ),
       body: SingleChildScrollView(
         // Padding to Give Default Equal Space on all sides in all screens.
@@ -53,7 +54,7 @@ class VerifyScreen extends StatelessWidget {
                       onPressed: () => controller.checkButton(),
                       child: const Text(TTexts.tContinue))),
               const SizedBox(height: TSizes.spaceBtwItems,),
-              SizedBox(width: double.infinity, child: TextButton(onPressed: (){}, child: const Text(TTexts.resendEmail))),
+              SizedBox(width: double.infinity, child: TextButton(onPressed: () => controller.sendEmailVerification(), child: const Text(TTexts.resendEmail))),
             ],
           ),
         ),
