@@ -39,6 +39,7 @@ class UserModel {
     return usernameWithPrefix;
   }
 
+  /// Static function to create an empty user model
   static UserModel empty() => UserModel(
       id: '',
       username: '',
@@ -48,6 +49,7 @@ class UserModel {
       firstName: '',
       profilePicture: '');
 
+  /// Convert model to JSON structure for storing data in db
   Map<String, dynamic> toJson() {
     return {
       'FirstName': firstName,

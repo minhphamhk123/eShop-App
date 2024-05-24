@@ -20,14 +20,14 @@ class LoginController extends GetxController {
   final email = TextEditingController();
   final password = TextEditingController();
   GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
-  // final userController = Get.put(UserController());
+  final userController = Get.put(UserController());
 
   @override
   void onInit() {
-    email.text = 'test@gmail.com';
-    password.text = 'admin123';
-    // email.text = localStorage.read('REMEMBER_ME_EMAIL');
-    // password.text = localStorage.read('REMEMBER_ME_PASSWORD');
+   // email.text = 'test@gmail.com';
+   //  password.text = 'admin123';
+   //  email.text = localStorage.read('REMEMBER_ME_EMAIL');
+   //  password.text = localStorage.read('REMEMBER_ME_PASSWORD');
     super.onInit();
   }
 
@@ -38,9 +38,7 @@ class LoginController extends GetxController {
   Future<void> googleSignIn() async {
     try {
       // Start Loading
-      TFullScreenLoader.openLoadingDialog(
-          'Logging you in....', TImages.onBoardingImage3);
-      // TFullScreenLoader.openLoadingDialog('Logging you in....', TImages.dancerAnimation);
+      TFullScreenLoader.openLoadingDialog('Logging you in....', TImages.docerAnimation);
 
       // Check Internet Connectivity
       final isConnected = await NetworkManager.instance.isConnected();
@@ -54,7 +52,7 @@ class LoginController extends GetxController {
           await AuthenticationRepository.instance.signInWithGoogle();
 
       // Save User Record
-      // await userController.saveUserRecord(userCredentials);
+      await userController.saveUserRecord(userCredentials);
 
       // Redirect
       AuthenticationRepository.instance.screenRedirect();

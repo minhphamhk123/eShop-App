@@ -10,8 +10,8 @@ import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/constants/text_strings.dart';
 
 class VerifyScreen extends StatelessWidget {
-  const VerifyScreen({super.key});
-
+  const VerifyScreen({super.key, this.email});
+  final String? email;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
