@@ -1,4 +1,5 @@
 import 'package:e_store/common/widgets/list_tiles/settings_menu_tile.dart';
+import 'package:e_store/features/personalization/controlers/setting_controller.dart';
 import 'package:e_store/features/shop/screens/order/order.dart';
 import 'package:e_store/features/personalization/screens/address/address.dart';
 import 'package:e_store/utils/constants/sizes.dart';
@@ -18,6 +19,7 @@ class SettingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(SettingController());
     return Scaffold(
         body: SingleChildScrollView(
             child: Column(
@@ -119,8 +121,8 @@ class SettingScreen extends StatelessWidget {
                 const SizedBox(height: TSizes.spaceBtwSections),
                 SizedBox(
                   width: double.infinity,
-                  child:
-                      OutlinedButton(onPressed: () {}, child: const Text('Logout')),
+                  child: OutlinedButton(
+                      onPressed: () => controller.logout(), child: const Text('Logout')),
                 ),
                 const SizedBox(height: TSizes.spaceBtwSections * 2.5),
               ],

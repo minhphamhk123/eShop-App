@@ -15,16 +15,15 @@ class VerifyEmailController extends GetxController {
   static VerifyEmailController get instance => Get.find();
 
   // Lấy instance của SignupController
-  final SignupController signupController = SignupController.instance;
   final SocketService _socketService = SocketService();
   Timer? _timer; // Timer để kiểm tra trạng thái tự động
   final deviceStorage = GetStorage();
-
+  late var user;
 
   @override
   Future<void> onInit() async {
     super.onInit();
-    final user = AuthenticationRepository.instance.user.value;
+    user = await AuthenticationRepository.instance.getUser();
     print("${user?.id} in email verify controller");
     _socketService.connect(user!.id);
 
@@ -52,12 +51,13 @@ class VerifyEmailController extends GetxController {
   }
 
   /// Check if email verified manual
-  void checkButton() {
+  Future<void> checkButton() async {
     print(_socketService.verifyStatus.value);
     if (_socketService.verifyStatus.value == 'pending' ||
         _socketService.verifyStatus.value == 'false') {
       TLoaders.successSnackBar(title: 'Please verify your email');
     } else if (_socketService.verifyStatus.value == 'true') {
+      await AuthenticationRepository.instance.login(user.username, user.password);
       _socketService.disconnect();
       deviceStorage.writeIfNull('IsVerify', true);
       Get.off(
@@ -76,9 +76,10 @@ class VerifyEmailController extends GetxController {
 
   /// Bắt đầu kiểm tra trạng thái tự động mỗi 5 giây
   void _startAutoCheck() {
-    _timer = Timer.periodic(Duration(seconds: 5), (timer) {
+    _timer = Timer.periodic(Duration(seconds: 5), (timer) async {
       print(_socketService.verifyStatus.value);
       if (_socketService.verifyStatus.value == 'true') {
+        await AuthenticationRepository.instance.login(user.username, user.password);
         _socketService.disconnect();
         _timer?.cancel();
         deviceStorage.writeIfNull('IsVerify', true);

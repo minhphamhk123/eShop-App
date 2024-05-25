@@ -1,15 +1,17 @@
 import 'dart:convert';
 
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 import 'package:flutter/foundation.dart';
 
 class SocketService {
   late IO.Socket _socket;
   final ValueNotifier<String> verifyStatus = ValueNotifier<String>('pending');
+  final ip = dotenv.env['IP'] ?? 'IP not found';
 
   void connect(String userId) {
     print('isConnecting');
-    _socket = IO.io('http://192.168.1.2:8080', <String, dynamic>{
+    _socket = IO.io('http://$ip:8080', <String, dynamic>{
       'transports': ['websocket'],
       'autoConnect': false,
       'query': {'userId': userId},
@@ -47,7 +49,7 @@ class SocketService {
       }
 
       // Lấy giá trị của trường 'verified'
-      var verifiedStatus = jsonData['verified'].toString();
+      var verifiedStatus = jsonData['value'].toString();
 
       print('Verified Status: $verifiedStatus test');
       print('Verified Status: $jsonData data');
