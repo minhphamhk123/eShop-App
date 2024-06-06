@@ -41,48 +41,53 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAdz91Pehfgh6y5RfNEXHGe6n3Bi5oKDpk',
-    appId: '1:430472490040:web:a882fb4dacd6902a2ccacd',
-    messagingSenderId: '430472490040',
-    projectId: 'kiotminimanager',
-    authDomain: 'kiotminimanager.firebaseapp.com',
-    storageBucket: 'kiotminimanager.appspot.com',
+    apiKey: 'AIzaSyDDJCgBr2xR0UBnsFmGlntWhyVaqaQq98E',
+    appId: '1:945693826861:web:11169c9205edc960407da4',
+    messagingSenderId: '945693826861',
+    projectId: 'eshop-app-5d35c',
+    authDomain: 'eshop-app-5d35c.firebaseapp.com',
+    storageBucket: 'eshop-app-5d35c.appspot.com',
+    measurementId: 'G-FPK5JFF84Q',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDEar9CEsOeh-yiyVSnQSUfBr0gBa3Op0M',
-    appId: '1:430472490040:android:e7b229068b3204b72ccacd',
-    messagingSenderId: '430472490040',
-    projectId: 'kiotminimanager',
-    storageBucket: 'kiotminimanager.appspot.com',
+    apiKey: 'AIzaSyDlb1Ba8iX6e4zcPkx3SHYeWxSi4x6RL3k',
+    appId: '1:945693826861:android:eacc15e947f12bac407da4',
+    messagingSenderId: '945693826861',
+    projectId: 'eshop-app-5d35c',
+    storageBucket: 'eshop-app-5d35c.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyDN0fqK-ks2UQFEStLPYcZVVsO_DVH-NGg',
-    appId: '1:430472490040:ios:4ca55d450d0c774f2ccacd',
-    messagingSenderId: '430472490040',
-    projectId: 'kiotminimanager',
-    storageBucket: 'kiotminimanager.appspot.com',
-    androidClientId: '430472490040-vnsc3tnrbjd8u80p5p1cg1t2fnmihmat.apps.googleusercontent.com',
-    iosClientId: '430472490040-enpipb2qets4ovi0f5t6kj24hm5ijac9.apps.googleusercontent.com',
+    apiKey: 'AIzaSyB_-ZxtNwkTFstwFx6-V3IDfTSnBOE1Sfk',
+    appId: '1:945693826861:ios:e2d2eeda83b9a906407da4',
+    messagingSenderId: '945693826861',
+    projectId: 'eshop-app-5d35c',
+    storageBucket: 'eshop-app-5d35c.appspot.com',
+    androidClientId: '945693826861-8u0l52nfh44pc0qtnmsqfc1fmsprvg85.apps.googleusercontent.com',
+    iosClientId: '945693826861-uk8gu4iggnlvli1se9lj94q3sco2c5v8.apps.googleusercontent.com',
     iosBundleId: 'com.example.eStore',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyDN0fqK-ks2UQFEStLPYcZVVsO_DVH-NGg',
-    appId: '1:430472490040:ios:4ca55d450d0c774f2ccacd',
-    messagingSenderId: '430472490040',
-    projectId: 'kiotminimanager',
-    storageBucket: 'kiotminimanager.appspot.com',
+    apiKey: 'AIzaSyB_-ZxtNwkTFstwFx6-V3IDfTSnBOE1Sfk',
+    appId: '1:945693826861:ios:e2d2eeda83b9a906407da4',
+    messagingSenderId: '945693826861',
+    projectId: 'eshop-app-5d35c',
+    storageBucket: 'eshop-app-5d35c.appspot.com',
+    androidClientId: '945693826861-8u0l52nfh44pc0qtnmsqfc1fmsprvg85.apps.googleusercontent.com',
+    iosClientId: '945693826861-uk8gu4iggnlvli1se9lj94q3sco2c5v8.apps.googleusercontent.com',
     iosBundleId: 'com.example.eStore',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyAdz91Pehfgh6y5RfNEXHGe6n3Bi5oKDpk',
-    appId: '1:430472490040:web:314aecfb118a27582ccacd',
-    messagingSenderId: '430472490040',
-    projectId: 'kiotminimanager',
-    authDomain: 'kiotminimanager.firebaseapp.com',
-    storageBucket: 'kiotminimanager.appspot.com',
+    apiKey: 'AIzaSyDDJCgBr2xR0UBnsFmGlntWhyVaqaQq98E',
+    appId: '1:945693826861:web:dc915a71f8efc2c0407da4',
+    messagingSenderId: '945693826861',
+    projectId: 'eshop-app-5d35c',
+    authDomain: 'eshop-app-5d35c.firebaseapp.com',
+    storageBucket: 'eshop-app-5d35c.appspot.com',
+    measurementId: 'G-7HH058XF5P',
   );
+
 }

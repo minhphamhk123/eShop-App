@@ -1,5 +1,4 @@
-import 'dart:io';
-
+import 'package:e_store/data/repositories/user/test.dart';
 import 'package:e_store/features/authentication/screens/signup/verify_email.dart';
 import 'package:e_store/navigation_menu.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -39,6 +38,7 @@ class AuthenticationRepository extends GetxController {
       if (user.emailVerified) {
         // If the user's email is verified, navigate to the main Navigation Menu
         Get.offAll(() => const NavigationMenu());
+        // Get.offAll(() => const LoginScreen());
       } else {
         Get.offAll(() => VerifyScreen(email: _auth.currentUser?.email));
       }
@@ -49,18 +49,20 @@ class AuthenticationRepository extends GetxController {
       // Check if it's the first time launching the app
       deviceStorage.read('IsFirstTime') != true
           ? Get.offAll(() =>
-              const LoginScreen()) // Redirect to Login Screen if not the first time
+      const LoginScreen()) // Redirect to Login Screen if not the first time
           : Get.offAll(
-              const OnBoardingScreen()); // Redirect to OnBoarding Screen if it's the first time
+          const OnBoardingScreen()); // Redirect to OnBoarding Screen if it's the first time
     }
   }
 
 /* --------------------------------Email & Password sign-in------------------------------*/
 
   /// [EmailAuthentication] - LOGIN
-  Future<UserCredential> loginWithEmailAndPassword(String email, String password) async {
+  Future<UserCredential> loginWithEmailAndPassword(String email,
+      String password) async {
     try {
-      return await _auth.signInWithEmailAndPassword(email: email, password: password);
+      return await _auth.signInWithEmailAndPassword(
+          email: email, password: password);
     } on FirebaseAuthException catch (e) {
       throw TFirebaseAuthException(e.code).message;
     } on FirebaseException catch (e) {
@@ -75,31 +77,34 @@ class AuthenticationRepository extends GetxController {
   }
 
   /// [EmailAuthentication] - REGISTER
-    Future<UserCredential> registerWithEmailAndPassword(String email, String password) async {
-        try {
-          return await _auth.signInWithEmailAndPassword(email: email, password: password);
-        } on FirebaseAuthException catch (e) {
-          throw TFirebaseAuthException(e.code).message;
-        } on FirebaseException catch (e) {
-          throw TFirebaseException(e.code).message;
-        } on FormatException catch (_) {
-          throw const TFormatException();
-        } on PlatformException catch (e) {
-          throw TPlatformException(e.code).message;
-        } catch (e) {
-          throw 'Something went wrong. Please try again';
-        }
+  Future<UserCredential> registerWithEmailAndPassword(String email,
+      String password) async {
+    try {
+      return await _auth.signInWithEmailAndPassword(
+          email: email, password: password);
+    } on FirebaseAuthException catch (e) {
+      throw TFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const TFormatException();
+    } on PlatformException catch (e) {
+      throw TPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Please try again';
     }
+  }
 
   /// [GoogleAuthentication] - GOOGLE
   Future<UserCredential?> signInWithGoogle() async {
     try {
       // Trigger the authentication flow
+      // final GoogleSignInAccount? userAccount = await GoogleSignIn().signOut();
       final GoogleSignInAccount? userAccount = await GoogleSignIn().signIn();
 
       // Obtain the auth details from the request
       final GoogleSignInAuthentication? googleAuth =
-          await userAccount?.authentication;
+      await userAccount?.authentication;
 
       // Create a new credential
       final credentials = GoogleAuthProvider.credential(
