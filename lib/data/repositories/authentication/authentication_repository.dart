@@ -39,7 +39,7 @@ class AuthenticationRepository extends GetxController {
     String? userJson = await storage.read(key: 'user');
     if (userJson != null) {
       Map<String, dynamic> userMap = json.decode(userJson);
-      return UserModel.fromJson(userMap);
+      return UserModel.fromJsonJVS(userMap);
     }
     return null;
   }
@@ -169,7 +169,7 @@ class AuthenticationRepository extends GetxController {
 
   /// [LogoutUser] - Valid for any authentication
   Future<void> logout() async {
-    // Xóa token từ storage
+
     var token = await storage.read(key: 'access_token');
     await storage.delete(key: 'user');
     Get.offAll(() => const LoginScreen());
@@ -183,6 +183,7 @@ class AuthenticationRepository extends GetxController {
           headers: {'Content-Type': 'application/json'}
       );
       print(res.body);
+      // Xóa token từ storage
       await storage.delete(key: 'access_token');
       if (res.statusCode != 200) {
         throw Exception('Failed to sign out');
