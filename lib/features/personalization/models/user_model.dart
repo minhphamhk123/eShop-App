@@ -63,13 +63,27 @@ class UserModel {
   }
 
   // Chuyển đổi Map sang UserModel
-  factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
-        id: json['Id'],
-        username: json['Username'],
-        email: json['Email'],
-        firstName: json['FirstName'],
-        lastName: json['LastName'],
-        phoneNumber: json['PhoneNumber'],
-        profilePicture: json['ProfilePicture'],
+  factory UserModel.fromJsonJVS(Map<String, dynamic> json) {
+      return UserModel(
+        id: json['Id'] ?? '',
+        username: json['Username'] ?? '',
+        email: json['Email'] ?? '',
+        firstName: json['FirstName'] ?? '',
+        lastName: json['LastName'] ?? '',
+        phoneNumber: json['PhoneNumber'] ?? '',
+        profilePicture: json['ProfilePicture'] ?? '',
       );
+  }
+
+  factory UserModel.fromJsonJV(Map<String, dynamic> json) {
+    return UserModel(
+      id: json['customerId'] ?? '',
+      username: json['Username'] ?? '',
+      email: json['emailId'] ?? '',
+      firstName: json['firstName'] ?? '',
+      lastName: json['lastName'] ?? '',
+      phoneNumber: json['mobileNo'] ?? '',
+      profilePicture: json['ProfilePicture'] ?? '',
+    );
+  }
 }
