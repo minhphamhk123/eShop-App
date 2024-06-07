@@ -170,15 +170,20 @@ class AuthenticationRepository extends GetxController {
   /// [LogoutUser] - Valid for any authentication
   Future<void> logout() async {
     // Xóa token từ storage
-    await storage.delete(key: 'access_token');
+    var token = await storage.read(key: 'access_token');
     await storage.delete(key: 'user');
-    await deviceStorage.remove('IsFirstTime');
     Get.offAll(() => const LoginScreen());
 
     var url = Uri.http('$ip:8080', '/api/auth/signout');
     try {
-      http.Response res = await http.get(url);
+      http.Response res = await http.post(url,
+          body: jsonEncode({
+            'token': token,
+          }),
+          headers: {'Content-Type': 'application/json'}
+      );
       print(res.body);
+      await storage.delete(key: 'access_token');
       if (res.statusCode != 200) {
         throw Exception('Failed to sign out');
       }

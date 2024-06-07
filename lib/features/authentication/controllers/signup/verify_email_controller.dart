@@ -57,7 +57,6 @@ class VerifyEmailController extends GetxController {
         _socketService.verifyStatus.value == 'false') {
       TLoaders.successSnackBar(title: 'Please verify your email');
     } else if (_socketService.verifyStatus.value == 'true') {
-      await AuthenticationRepository.instance.login(user.username, user.password);
       _socketService.disconnect();
       deviceStorage.writeIfNull('IsVerify', true);
       Get.off(
@@ -79,7 +78,6 @@ class VerifyEmailController extends GetxController {
     _timer = Timer.periodic(Duration(seconds: 5), (timer) async {
       print(_socketService.verifyStatus.value);
       if (_socketService.verifyStatus.value == 'true') {
-        await AuthenticationRepository.instance.login(user.username, user.password);
         _socketService.disconnect();
         _timer?.cancel();
         deviceStorage.writeIfNull('IsVerify', true);

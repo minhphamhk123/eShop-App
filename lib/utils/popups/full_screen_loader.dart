@@ -17,7 +17,7 @@ class TFullScreenLoader {
                 : TColors.white,
             width: double.infinity,
             height: double.infinity,
-            child: Column(
+            child: ListView(
               children: [
                 const SizedBox(height: 50),
                 TAnimationLoaderWidget(text: text, animation: animation),
