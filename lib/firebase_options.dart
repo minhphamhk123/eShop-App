@@ -57,6 +57,7 @@ class DefaultFirebaseOptions {
     storageBucket: 'kiotminimanager.appspot.com',
   );
 
+  //new
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyDN0fqK-ks2UQFEStLPYcZVVsO_DVH-NGg',
     appId: '1:430472490040:ios:4ca55d450d0c774f2ccacd',
