@@ -9,12 +9,12 @@ class SocketService {
   final ValueNotifier<String> verifyStatus = ValueNotifier<String>('pending');
   final ip = dotenv.env['IP'] ?? 'IP not found';
 
-  void connect(String userId) {
+  void connect(String email) {
     print('isConnecting');
     _socket = IO.io('http://$ip:8080', <String, dynamic>{
       'transports': ['websocket'],
       'autoConnect': false,
-      'query': {'userId': userId},
+      'query': {'email': email},
     });
 
     // Lắng nghe sự kiện kết nối

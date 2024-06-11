@@ -27,13 +27,13 @@ class UserRepository extends GetxController {
           'token': 'customer_$token', // Add the token here
         },
       );
-      if (res.statusCode == 200) {
+      if (res.statusCode == 202) {
         // Handle the successful response
         print('Request successful: ${res.body}');
-        Map<String, dynamic> responseBody = jsonDecode(res.body);
-        return AuthenticationRepository.instance.user.value = UserModel.fromJsonJV(responseBody);
+        return UserModel.fromJsonJV(jsonDecode(res.body));
       } else {
-        throw 'Something went wrong. Please try again';
+        print('Request fail: ${res.body}');
+        throw 'Fail to fetch data';
       }
     } catch (e) {
       print(e);
@@ -43,7 +43,6 @@ class UserRepository extends GetxController {
 
   /// [Update user]
   Future<UserModel> updateUserDetails(String email,
-      String password,
       String username,
       String firstName,
       String lastName,
@@ -61,10 +60,10 @@ class UserRepository extends GetxController {
             'firstName': firstName,
             'lastName': lastName,
             'mobileNo': phoneNumber,
-            'address': '',
+            'address': {},
           })
       );
-      if (res.statusCode == 200) {
+      if (res.statusCode == 202) {
         // Handle the successful response
         print('Request successful: ${res.body}');
         Map<String, dynamic> responseBody = jsonDecode(res.body);
@@ -78,5 +77,31 @@ class UserRepository extends GetxController {
     }
   }
 
+  Future<String> deleteUserDetails(String email, String password) async {
+    var url = Uri.http('$ip:8009', '/customer');
+    var token = await storage.read(key: 'access_token');
+    try {
+      http.Response res = await http.delete(url,
+        headers: {
+          'Content-Type': 'application/json',
+          'token': 'customer_$token', // Add the token here
+        },
+          body: jsonEncode({
+            'emailId': email,
+            'password': password,
+          })
+      );
+      if (res.statusCode == 202) {
+        // Handle the successful response
+        print('Request successful: ${res.body}');
+        return '';
+      } else {
+        throw 'Something went wrong. Please try again';
+      }
+    } catch (e) {
+      print(e);
+      throw 'Something went wrong. Please try again';
+    }
+  }
 
 }

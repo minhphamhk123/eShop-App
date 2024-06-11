@@ -11,6 +11,7 @@ class OnBoardingController extends GetxController {
   /// Variables
   final pageController = PageController();
   Rx<int> currentPageIndex = 0.obs;
+  final storage = GetStorage();
 
   /// Update Current Index when Page Scroll
   void updatePageIndicator(index) => currentPageIndex.value = index;
@@ -25,20 +26,20 @@ class OnBoardingController extends GetxController {
   void nextPage() {
     if (currentPageIndex.value == 2)
     {
-      final storage = GetStorage();
 
-      if (kDebugMode) {
+
+
         print('=============== GET STORAGE Next button ====================');
         print(storage.read('IsFirstTime'));
-      }
+
 
       storage.write('IsFirstTime', false);
 
-      if (kDebugMode) {
+
         print('=============== GET STORAGE Next button ====================');
         print(storage.read('IsFirstTime'));
-      }
-      Get.offAll(const LoginScreen());
+
+      Get.offAll(() => const LoginScreen());
     }
     else{
       int page = currentPageIndex.value + 1;
@@ -48,6 +49,7 @@ class OnBoardingController extends GetxController {
 
   /// Update Current Index & jump to the last Page
   void skipPage() {
-    Get.offAll(const LoginScreen());
+    storage.write('IsFirstTime', false);
+    Get.offAll(() => const LoginScreen());
   }
 }

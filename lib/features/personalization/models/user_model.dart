@@ -77,13 +77,13 @@ class UserModel {
 
   factory UserModel.fromJsonJV(Map<String, dynamic> json) {
     return UserModel(
-      id: json['customerId'] ?? '',
-      username: json['Username'] ?? '',
+      id: json['mongoDbID'].toString() ?? '',
+      username: json['userName'] ?? '',
       email: json['emailId'] ?? '',
       firstName: json['firstName'] ?? '',
       lastName: json['lastName'] ?? '',
       phoneNumber: json['mobileNo'] ?? '',
-      profilePicture: json['ProfilePicture'] ?? '',
+      profilePicture: json['profilePicture'] ?? '',
     );
   }
 }

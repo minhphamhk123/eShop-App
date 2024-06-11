@@ -10,6 +10,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
 import '../../../../socket_service.dart';
+import '../../../personalization/models/user_model.dart';
 
 class VerifyEmailController extends GetxController {
   static VerifyEmailController get instance => Get.find();
@@ -18,17 +19,19 @@ class VerifyEmailController extends GetxController {
   final SocketService _socketService = SocketService();
   Timer? _timer; // Timer để kiểm tra trạng thái tự động
   final deviceStorage = GetStorage();
-  late var user;
+  var emailCheck = ''.obs;
 
   @override
   Future<void> onInit() async {
     super.onInit();
-    user = await AuthenticationRepository.instance.getUser();
-    print("${user?.id} in email verify controller");
-    _socketService.connect(user!.id);
-
-    // Bắt đầu kiểm tra trạng thái tự động mỗi 5 giây
-    _startAutoCheck();
+    print("$emailCheck in email verify controller");
+    // Theo dõi sự thay đổi của email
+    ever(emailCheck, (String? emailCheck) {
+      if (emailCheck != null && emailCheck.isNotEmpty) {
+        _socketService.connect(emailCheck);
+        _startAutoCheck();
+      }
+    });
   }
 
   @override
@@ -39,10 +42,10 @@ class VerifyEmailController extends GetxController {
   }
 
   /// Send email verification
-  sendEmailVerification() async {
-    final user = await AuthenticationRepository.instance.getUser();
+  sendEmailVerification(String email) async {
+
     try {
-      await AuthenticationRepository.instance.sendEmail(user!.id, user.email);
+      await AuthenticationRepository.instance.sendEmail(email);
       TLoaders.successSnackBar(title: 'Email sent', message: 'Please check your email, maybe check in spam section');
     } catch(e) {
       print(e);
@@ -58,7 +61,7 @@ class VerifyEmailController extends GetxController {
       TLoaders.successSnackBar(title: 'Please verify your email');
     } else if (_socketService.verifyStatus.value == 'true') {
       _socketService.disconnect();
-      deviceStorage.writeIfNull('IsVerify', true);
+      await deviceStorage.writeIfNull('IsVerify', true);
       Get.off(
         () => SuccessScreen(
           image: TImages.loaderAnimation,
@@ -80,7 +83,7 @@ class VerifyEmailController extends GetxController {
       if (_socketService.verifyStatus.value == 'true') {
         _socketService.disconnect();
         _timer?.cancel();
-        deviceStorage.writeIfNull('IsVerify', true);
+        await deviceStorage.writeIfNull('IsVerify', true);
         Get.off(
               () => SuccessScreen(
             image: TImages.loaderAnimation,
