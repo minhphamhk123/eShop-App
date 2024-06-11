@@ -10,7 +10,7 @@ import '../../../../common/widgets/custom_shapes/containers/primary_header_conta
 import '../../../../common/widgets/custom_shapes/containers/search_container.dart';
 import '../../../../common/widgets/layouts/grid_layout.dart';
 import '../../../../common/widgets/products/product_cards/product_card_vertical.dart';
-import '../../../../home_categories.dart';
+import 'widgets/home_categories.dart';
 import '../../../../utils/constants/colors.dart';
 import '../all_products/all_products.dart';
 

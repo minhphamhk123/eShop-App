@@ -1,5 +1,5 @@
 import 'package:e_store/common/widgets/appbar/appbar.dart';
-import 'package:e_store/common/widgets/shimmer.dart';
+import 'package:e_store/common/widgets/shimmers/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
