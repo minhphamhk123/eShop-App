@@ -1,4 +1,5 @@
 import 'package:e_store/data/repositories/user/test.dart';
+import 'package:e_store/features/admin_panel/shop_info.dart';
 import 'package:e_store/features/authentication/screens/signup/verify_email.dart';
 import 'package:e_store/navigation_menu.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -37,8 +38,8 @@ class AuthenticationRepository extends GetxController {
       // If the user is logged in
       if (user.emailVerified) {
         // If the user's email is verified, navigate to the main Navigation Menu
-        Get.offAll(() => const NavigationMenu());
-        // Get.offAll(() => const LoginScreen());
+        // Get.offAll(() => const NavigationMenu());
+        Get.offAll(() => const ShopInfoScreen());
       } else {
         Get.offAll(() => VerifyScreen(email: _auth.currentUser?.email));
       }

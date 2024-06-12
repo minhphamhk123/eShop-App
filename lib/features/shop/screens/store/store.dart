@@ -10,10 +10,8 @@ import 'package:get/get.dart';
 
 import '../../../../common/widgets/brands/brand_card.dart';
 import '../../../../common/widgets/products/cart/cart_menu_icon.dart';
-import '../../../../common/widgets/products/product_cards/product_card_vertical.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/sizes.dart';
-import '../all_products/all_products.dart';
 import '../brand/all_brands.dart';
 import '../brand/brand_products.dart';
 import '../cart/cart.dart';
