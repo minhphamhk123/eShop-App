@@ -60,64 +60,62 @@ class _ShopInfoScreenState extends State<ShopInfoScreen> {
             primary: TColors.primary,
           ),
         ),
-        child: Expanded(
-          child: Stepper(
-            // type: StepperType.horizontal,
-            steps: getSteps(),
-            currentStep: currentStep,
-            onStepContinue: () {
-              final isLastStep = currentStep == getSteps().length - 1;
-              if (isLastStep) {
-                print('Complete');
-                // Handle form submission and send data to server
-              } else {
-                setState(() => currentStep += 1);
-              }
-            },
-            onStepTapped: (step) {
-              setState(() => currentStep = step);
-            },
-            onStepCancel: currentStep == 0
-                ? null
-                : () {
-                    setState(() => currentStep -= 1);
-                  },
-            controlsBuilder: (BuildContext context, ControlsDetails details) {
-              final isLastStep = currentStep == getSteps().length - 1;
-              return Container(
-                margin: const EdgeInsets.only(top: TSizes.spaceBtwSections),
-                child: Row(
-                  children: [
-                    if (currentStep != 0)
-                      Expanded(
-                        child: ElevatedButton(
-                          onPressed: details.onStepCancel,
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: TColors.grey,
-                            side: const BorderSide(color: TColors.grey),
-                          ),
-                          child: Text(
-                            'Back',
-                            style: TextStyle(
-                                color: TColors.black.withOpacity(0.7)),
-                          ),
-                        ),
-                      ),
-                    const SizedBox(width: TSizes.spaceBtwItems),
+        child: Stepper(
+          // type: StepperType.horizontal,
+          steps: getSteps(),
+          currentStep: currentStep,
+          onStepContinue: () {
+            final isLastStep = currentStep == getSteps().length - 1;
+            if (isLastStep) {
+              print('Complete');
+              // Handle form submission and send data to server
+            } else {
+              setState(() => currentStep += 1);
+            }
+          },
+          onStepTapped: (step) {
+            setState(() => currentStep = step);
+          },
+          onStepCancel: currentStep == 0
+              ? null
+              : () {
+            setState(() => currentStep -= 1);
+          },
+          controlsBuilder: (BuildContext context, ControlsDetails details) {
+            final isLastStep = currentStep == getSteps().length - 1;
+            return Container(
+              margin: const EdgeInsets.only(top: TSizes.spaceBtwSections),
+              child: Row(
+                children: [
+                  if (currentStep != 0)
                     Expanded(
                       child: ElevatedButton(
-                        onPressed: details.onStepContinue,
+                        onPressed: details.onStepCancel,
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: TColors.primary,
+                          backgroundColor: TColors.grey,
+                          side: const BorderSide(color: TColors.grey),
                         ),
-                        child: Text(isLastStep ? 'Finish' : 'Next'),
+                        child: Text(
+                          'Back',
+                          style: TextStyle(
+                              color: TColors.black.withOpacity(0.7)),
+                        ),
                       ),
                     ),
-                  ],
-                ),
-              );
-            },
-          ),
+                  const SizedBox(width: TSizes.spaceBtwItems),
+                  Expanded(
+                    child: ElevatedButton(
+                      onPressed: details.onStepContinue,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: TColors.primary,
+                      ),
+                      child: Text(isLastStep ? 'Finish' : 'Next'),
+                    ),
+                  ),
+                ],
+              ),
+            );
+          },
         ),
       ),
     );
