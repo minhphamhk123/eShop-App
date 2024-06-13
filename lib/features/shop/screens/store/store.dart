@@ -13,6 +13,7 @@ import '../../../../common/widgets/products/cart/cart_menu_icon.dart';
 import '../../../../common/widgets/products/product_cards/product_card_vertical.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/sizes.dart';
+import '../../controllers/category_controller.dart';
 import '../all_products/all_products.dart';
 import '../brand/all_brands.dart';
 import '../brand/brand_products.dart';
@@ -23,8 +24,9 @@ class StoreScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final categories = CategoryController.instance.featuredCategories;
     return DefaultTabController(
-      length: 5,
+      length: categories.length,
       child: Scaffold(
         /// -- Appbar -- Tutorial [Section # 3, Video 7]
         appBar: TAppBar(
@@ -80,28 +82,16 @@ class StoreScreen extends StatelessWidget {
                   ),
 
                   /// Tabs -- Tutorial [Section # 3, Video # 8]
-                  bottom: const TTabBar(
-                    tabs: [
-                      Tab(child: Text('Sports')),
-                      Tab(child: Text('Furniture')),
-                      Tab(child: Text('Electronics')),
-                      Tab(child: Text('Clothes')),
-                      Tab(child: Text('Cosmetics')),
-                    ],
-                  ),
+                  bottom: TTabBar(
+                    tabs: categories.map((category) => Tab(child: Text(category.name))).toList()),
                 ),
               ];
             },
 
             /// --Body --Tutorial [Section # 3, Video # 8]
-            body: const TabBarView(
-              children: [
-                TCategoryTab(),
-                TCategoryTab(),
-                TCategoryTab(),
-                TCategoryTab(),
-                TCategoryTab(),
-              ],
+            body: TabBarView(
+              children:
+                   categories.map((category) => TCategoryTab(category: category)).toList(),
             )),
       ),
     );

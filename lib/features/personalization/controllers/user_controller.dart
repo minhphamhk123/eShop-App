@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:e_store/data/repositories/authentication/authentication_repository.dart';
 import 'package:e_store/data/repositories/user/user_repository.dart';
 import 'package:e_store/features/authentication/screens/login/login.dart';
@@ -9,6 +11,7 @@ import 'package:e_store/utils/popups/loaders.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../../../data/network_manager.dart';
 import '../../../utils/constants/sizes.dart';
@@ -17,10 +20,12 @@ class UserController extends GetxController {
   static UserController get instance => Get.find();
 
   final profileLoading = false.obs;
-  Rx<UserModel> user = UserModel.empty()
+  Rx<UserModel> user = UserModel
+      .empty()
       .obs; //obs giup moi khi co thay doi voi user thi ta se redraw lai trang
 
   final hidePassword = false.obs;
+  final imageLoading = false.obs;
   final verifyEmail = TextEditingController();
   final verifyPassword = TextEditingController();
   final userRepository = Get.put(UserRepository());
@@ -50,7 +55,7 @@ class UserController extends GetxController {
       contentPadding: const EdgeInsets.all(TSizes.md),
       title: 'Delete Account',
       middleText:
-          'Are you sure you want to delete your account permanently? This action is not reversible and all of your data be removed permanently.',
+      'Are you sure you want to delete your account permanently? This action is not reversible and all of your data be removed permanently.',
       confirm: ElevatedButton(
         onPressed: () async => deleteUserAccount(),
         style: ElevatedButton.styleFrom(
@@ -73,7 +78,8 @@ class UserController extends GetxController {
   /// Delete User Account
   void deleteUserAccount() async {
     try {
-      TFullScreenLoader.openLoadingDialog('Processing', TImages.loaderAnimation);
+      TFullScreenLoader.openLoadingDialog(
+          'Processing', TImages.loaderAnimation);
       final auth = AuthenticationRepository.instance;
 
       TFullScreenLoader.stopLoading();
@@ -106,19 +112,52 @@ class UserController extends GetxController {
         return;
       }
 
-      final delete = await UserRepository.instance.deleteUserDetails(verifyEmail.text.trim(), verifyPassword.text.trim());
+      final delete = await UserRepository.instance.deleteUserDetails(
+          verifyEmail.text.trim(), verifyPassword.text.trim());
 
       TFullScreenLoader.stopLoading();
 
-      if(delete  != '') {
+      if (delete != '') {
         Navigator.of(Get.overlayContext!).pop();
-        TLoaders.errorSnackBar(title: 'Problem wwith delete account', message: delete);
+        TLoaders.errorSnackBar(
+            title: 'Problem wwith delete account', message: delete);
       } else {
         Get.offAll(() => const LoginScreen());
       }
-    } catch(e) {
+    } catch (e) {
       TFullScreenLoader.stopLoading();
       TLoaders.warningSnackBar(title: 'Oh Snap!', message: e.toString());
     }
   }
- }
+
+  uploadProfilePicture() async {
+    try {
+      final ImagePicker picker = ImagePicker();
+      final XFile? image = await picker.pickImage(source: ImageSource.gallery,
+          imageQuality: 70,
+          maxHeight: 512,
+          maxWidth: 512);
+      if (image != null) {
+        imageLoading.value = true;
+        final imageUrl = await userRepository.uploadImage(
+            'Users/Images/Profile', image);
+
+        await userRepository.updateUserDetails(
+            user.value.email,
+            user.value.username,
+            user.value.firstName,
+            user.value.lastName,
+            user.value.phoneNumber, imageUrl);
+
+        user.value.profilePicture = imageUrl;
+        user.refresh();
+        TLoaders.successSnackBar(title: 'Congratulations',
+            message: 'Your Profile Image has been updated');
+      }
+    } catch (e) {
+      TLoaders.errorSnackBar(
+          title: "Oh Snap!", message: '$e');
+    } finally {
+      imageLoading.value = false;
+  }
+}}

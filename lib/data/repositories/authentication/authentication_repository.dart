@@ -127,8 +127,9 @@ class AuthenticationRepository extends GetxController {
           }),
           headers: {'Content-Type': 'application/json'});
 
+      final responseBody = json.decode(res.body);
+
       if (res.statusCode == 200) {
-        final responseBody = json.decode(res.body);
         final token = responseBody['user']['token'];
         await storage.write(key: 'access_token', value: token);
         print('Extracted token: $token');
@@ -141,7 +142,7 @@ class AuthenticationRepository extends GetxController {
       } else if (res.statusCode == 402) {
         return "Email hasn't been verified";
       }
-      return '';
+      return responseBody['message'];
     } catch (e) {
       print(e);
       throw 'Something went wrong. Please try again';

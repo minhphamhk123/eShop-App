@@ -73,7 +73,7 @@ class LoginController extends GetxController {
         TLoaders.errorSnackBar(title: 'Error', message: logStatus);
         Get.offAll(() => VerifyScreen(email: email.text.trim()));
       } else {
-        Get.offAll(() => const NavigationMenu());
+        TLoaders.errorSnackBar(title: 'Something wrong', message: logStatus);
       }
     } catch(e) {
       TFullScreenLoader.stopLoading();

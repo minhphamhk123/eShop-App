@@ -63,7 +63,7 @@ class UpdateNameController extends GetxController {
           userController.user.value.username,
           firstName.text.trim(),
           lastName.text.trim(),
-          userController.user.value.phoneNumber);
+          userController.user.value.phoneNumber, '');
 
       // Update the Rx user value
       userController.user.value.firstName = firstName.text.trim();
@@ -76,6 +76,7 @@ class UpdateNameController extends GetxController {
       TLoaders.successSnackBar(
           title: 'Congratulation', message: 'Your name has been updated!');
 
+      await userController.fetchUserRecord();
       // Move to verify Email Screen
       Get.off(() => const ProfileScreen());
     } catch (e) {

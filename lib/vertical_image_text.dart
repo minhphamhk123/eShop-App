@@ -32,7 +32,6 @@ class TVerticalImageText extends StatelessWidget{
         padding: const EdgeInsets.only(right: TSizes.spaceBtwItems),
         child: Column(
           children:[
-
             TCircularImage(
               image: image,
               fit: BoxFit.fitWidth,
@@ -56,8 +55,7 @@ class TVerticalImageText extends StatelessWidget{
 
             //Text
             const SizedBox(height: TSizes.spaceBtwItems/2),
-            SizedBox(
-              width: 55,
+            Center(
               child: Text(title,style: Theme.of(context).textTheme.labelMedium!.apply(color: TColors.white), maxLines: 1,overflow: TextOverflow.ellipsis,
               ),
             )

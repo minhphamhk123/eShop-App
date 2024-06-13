@@ -9,9 +9,12 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:iconsax/iconsax.dart';
 import '../../../../common/widgets/products/ratings/rating_indicator.dart';
 import '../../../../utils/constants/sizes.dart';
+import '../../models/product_model.dart';
 
 class ProductReviewsScreen extends StatelessWidget {
-  const ProductReviewsScreen({super.key});
+  const ProductReviewsScreen({super.key, required this.product});
+
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
@@ -34,9 +37,9 @@ class ProductReviewsScreen extends StatelessWidget {
               const SizedBox(height: TSizes.spaceBtwItems),
 
               /// Overall Product Ratings
-              const TOverallProductRating(),
-              const TRatingBarIndicator(rating: 3.5,),
-              Text('12,611', style: Theme.of(context).textTheme.bodySmall),
+              TOverallProductRating(product: product,),
+              TRatingBarIndicator(rating: product.rating ?? 3.5,),
+              Text('${product.reviews?.length}', style: Theme.of(context).textTheme.bodySmall),
               const SizedBox(height: TSizes.spaceBtwSections),
 
               /// User Reviews List

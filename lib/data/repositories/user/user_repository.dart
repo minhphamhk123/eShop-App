@@ -1,11 +1,16 @@
 import 'dart:convert';
+import 'dart:io';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_store/data/repositories/authentication/authentication_repository.dart';
 import 'package:e_store/features/personalization/models/user_model.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:image_picker/image_picker.dart';
 
 class UserRepository extends GetxController {
   static UserRepository get instance => Get.find();
@@ -14,7 +19,6 @@ class UserRepository extends GetxController {
 
   /// Variables
   final storage = const FlutterSecureStorage();
-
 
   /// [Fetch data]
   Future<UserModel> fetchUserDetails() async {
@@ -46,7 +50,7 @@ class UserRepository extends GetxController {
       String username,
       String firstName,
       String lastName,
-      String phoneNumber) async {
+      String phoneNumber, String profilePicture) async {
     var url = Uri.http('$ip:8009', '/customer');
     var token = await storage.read(key: 'access_token');
     try {
@@ -60,6 +64,7 @@ class UserRepository extends GetxController {
             'firstName': firstName,
             'lastName': lastName,
             'mobileNo': phoneNumber,
+            'profilePicture': profilePicture,
             'address': {},
           })
       );
@@ -100,6 +105,22 @@ class UserRepository extends GetxController {
       }
     } catch (e) {
       print(e);
+      throw 'Something went wrong. Please try again';
+    }
+  }
+
+  Future<String> uploadImage(String path, XFile image) async {
+    try {
+      final ref = FirebaseStorage.instance.ref(path).child(image.name);
+      await ref.putFile(File(image.path));
+      final url = await ref.getDownloadURL();
+      return url;
+
+    } on FirebaseException catch(e) {
+      throw e;
+    } on PlatformException catch(e) {
+      throw e;
+    } catch(e) {
       throw 'Something went wrong. Please try again';
     }
   }

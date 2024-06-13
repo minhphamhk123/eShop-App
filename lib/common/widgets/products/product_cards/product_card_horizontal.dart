@@ -2,6 +2,8 @@ import 'package:e_store/common/widgets/icons/t_circular_icon.dart';
 import 'package:e_store/common/widgets/images/t_rounded_image.dart';
 import 'package:e_store/common/widgets/texts/product_price_text.dart';
 import 'package:e_store/common/widgets/texts/product_title_text.dart';
+import 'package:e_store/features/shop/controllers/product/product_controller.dart';
+import 'package:e_store/features/shop/models/product_model.dart';
 import 'package:e_store/rounded_container.dart';
 import 'package:e_store/utils/constants/image_strings.dart';
 import 'package:e_store/utils/helpers/helper_functions.dart';
@@ -14,12 +16,13 @@ import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/sizes.dart';
 
 class TProductCardHorizontal extends StatelessWidget{
-  const TProductCardHorizontal({super.key});
-
+  const TProductCardHorizontal({super.key, required this.product});
+final ProductModel product;
   @override
   Widget build(BuildContext context)
   {
     final dark = THelperFunctions.isDarkMode(context);
+    final controller = ProductController.instance;
 
     return Container(
         width: 310,
@@ -35,13 +38,13 @@ class TProductCardHorizontal extends StatelessWidget{
               height: 120,
               padding: const EdgeInsets.all(TSizes.sm),
               backgroundColor: dark ? TColors.darkerGrey : TColors.white,
-              child: const Stack(
+              child: Stack(
                 children: [
                   ///Thumbnail Image
                   SizedBox(
                     height: 120,
                     width: 120,
-                    child: TRoundedImage(imageUrl: TImages.productImage1, applyImageRadius: true,),
+                    child: TRoundedImage(imageUrl: product.thumbnail, isNetworkImage: true, applyImageRadius: true,),
                   ),
                   ///Sale tag
                   Positioned(
@@ -52,7 +55,7 @@ class TProductCardHorizontal extends StatelessWidget{
                       padding: const EdgeInsets.symmetric(
                           horizontal: TSizes.sm, vertical: TSizes.xs),
                       child: Text(
-                        '25%',
+                        '${product.discountPercentage}%',
                         //style: Theme.of(context).textTheme.labelLarge!.apply(color: TColors.black),
                       ),
                     ),
@@ -73,10 +76,10 @@ class TProductCardHorizontal extends StatelessWidget{
                 padding: EdgeInsets.only(top: TSizes.sm, left: TSizes.sm),
                 child: Column(
                   children: [
-                    const Column(
+                    Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        TProductTitleText(title: 'Green Nike Half Sleeves Shirt', smallSize: true,),
+                        TProductTitleText(title: product.title, smallSize: true,),
                         SizedBox(height:TSizes.spaceBtwItems/2),
                         //TBrandTitleWithVerifiedIcon(title: 'Nike'),
                       ],
@@ -87,7 +90,7 @@ class TProductCardHorizontal extends StatelessWidget{
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         ///Pricing
-                        const Flexible(child: TProductPriceText(price: '256.0')),
+                        Flexible(child: TProductPriceText(price: controller.calculateDiscountedPrice(product.price!, product.discountPercentage!))),
                         ///Add to cart
                         Container(
                           decoration: const BoxDecoration(
