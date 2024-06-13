@@ -1,5 +1,8 @@
+import 'dart:io';
+import 'dart:typed_data';
 import 'package:e_store/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../../utils/constants/colors.dart';
 import '../../utils/helpers/helper_functions.dart';
@@ -33,6 +36,9 @@ class _ShopInfoScreenState extends State<ShopInfoScreen> {
   String _identificationForm = 'Citizen ID';
   final _idNumberController = TextEditingController();
   final _nameController = TextEditingController();
+
+  Uint8List? _image;
+  File? selectedImage;
 
   @override
   Widget build(BuildContext context) {
@@ -79,12 +85,12 @@ class _ShopInfoScreenState extends State<ShopInfoScreen> {
           onStepCancel: currentStep == 0
               ? null
               : () {
-            setState(() => currentStep -= 1);
-          },
+                  setState(() => currentStep -= 1);
+                },
           controlsBuilder: (BuildContext context, ControlsDetails details) {
             final isLastStep = currentStep == getSteps().length - 1;
             return Container(
-              margin: const EdgeInsets.only(top: TSizes.spaceBtwSections),
+              margin: const EdgeInsets.only(top: TSizes.spaceBtwInputFields),
               child: Row(
                 children: [
                   if (currentStep != 0)
@@ -97,8 +103,8 @@ class _ShopInfoScreenState extends State<ShopInfoScreen> {
                         ),
                         child: Text(
                           'Back',
-                          style: TextStyle(
-                              color: TColors.black.withOpacity(0.7)),
+                          style:
+                              TextStyle(color: TColors.black.withOpacity(0.7)),
                         ),
                       ),
                     ),
@@ -126,7 +132,7 @@ class _ShopInfoScreenState extends State<ShopInfoScreen> {
           state: currentStep > 0 ? StepState.complete : StepState.indexed,
           isActive: currentStep >= 0,
           title: Text(
-            'Info',
+            'Shop Info',
             style: Theme.of(context).textTheme.headlineSmall,
           ),
           content: Column(
@@ -156,7 +162,7 @@ class _ShopInfoScreenState extends State<ShopInfoScreen> {
           state: currentStep > 1 ? StepState.complete : StepState.indexed,
           isActive: currentStep >= 1,
           title: Text(
-            'Delivery',
+            'Delivery Settings',
             style: Theme.of(context).textTheme.headlineSmall,
           ),
           content: Column(
@@ -216,7 +222,7 @@ class _ShopInfoScreenState extends State<ShopInfoScreen> {
           state: currentStep > 2 ? StepState.complete : StepState.indexed,
           isActive: currentStep >= 2,
           title: Text(
-            'Tax',
+            'Tax Info',
             style: Theme.of(context).textTheme.headlineSmall,
           ),
           content: Column(
@@ -285,13 +291,14 @@ class _ShopInfoScreenState extends State<ShopInfoScreen> {
                 controller: _taxCodeController,
                 label: 'Tax code',
               ),
+              const SizedBox(height: TSizes.spaceBtwInputFields),
             ],
           ),
         ),
         Step(
           isActive: currentStep >= 3,
           title: Text(
-            'Identification',
+            'Identification Info',
             style: Theme.of(context).textTheme.headlineSmall,
           ),
           content: Column(
@@ -356,7 +363,37 @@ class _ShopInfoScreenState extends State<ShopInfoScreen> {
                   ),
                   borderRadius: BorderRadius.circular(8),
                 ),
-              )
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(15.0),
+                  child: _image != null
+                      ? Container(
+                          height: 180,
+                          width: 300,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: MemoryImage(_image!),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        )
+                      : Container(
+                          height: 180,
+                          width: 300,
+                          color: TColors.grey,
+                          child: IconButton(
+                            onPressed: () {
+                              showImagePickerOption(context);
+                            },
+                            color: TColors.darkerGrey,
+                            icon: const Icon(
+                              Icons.upload_file_rounded,
+                              size: 100,
+                            ),
+                          ),
+                        ),
+                ),
+              ),
+              IconButton(onPressed: (){showImagePickerOption(context);}, icon: const Icon(Icons.change_circle, size: 42,)),
             ],
           ),
         ),
@@ -406,5 +443,82 @@ class _ShopInfoScreenState extends State<ShopInfoScreen> {
       inactiveThumbColor: TColors.darkerGrey.withOpacity(0.5),
       inactiveTrackColor: TColors.grey,
     );
+  }
+
+  void showImagePickerOption(BuildContext context) {
+    showModalBottomSheet(
+        backgroundColor: Colors.blue[100],
+        context: context,
+        builder: (builder) {
+          return Padding(
+            padding: const EdgeInsets.all(18.0),
+            child: SizedBox(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height / 5,
+              child: Row(
+                children: [
+                  Expanded(
+                    child: InkWell(
+                      onTap: () {
+                        _pickerImageFormGallery();
+                      },
+                      child: const SizedBox(
+                        child: Column(
+                          children: [
+                            Icon(
+                              Icons.image,
+                              size: 70,
+                            ),
+                            Text('Gallery'),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: InkWell(
+                      onTap: () {
+                        _pickerImageFormCamera();
+                      },
+                      child: const SizedBox(
+                        child: Column(
+                          children: [
+                            Icon(
+                              Icons.camera_alt,
+                              size: 70,
+                            ),
+                            Text('Camera'),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
+        });
+  }
+/// Image Picker for Gallery
+  Future _pickerImageFormGallery() async {
+    final returnImage =
+    await ImagePicker().pickImage(source: ImageSource.gallery);
+    if (returnImage == null) return;
+    setState(() {
+      selectedImage = File(returnImage.path);
+      _image = File(returnImage.path).readAsBytesSync();
+    });
+    Navigator.of(context).pop(); // Close the modal sheet
+  }
+  /// Image Picker for Camera
+  Future _pickerImageFormCamera() async {
+    final returnImage =
+    await ImagePicker().pickImage(source: ImageSource.camera);
+    if (returnImage == null) return;
+    setState(() {
+      selectedImage = File(returnImage.path);
+      _image = File(returnImage.path).readAsBytesSync();
+    });
+    Navigator.of(context).pop();
   }
 }
