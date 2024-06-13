@@ -36,7 +36,7 @@ class TLoginForm extends StatelessWidget {
 
             /// PassWord
             Obx(
-              () => TextFormField(
+                  () => TextFormField(
                 controller: controller.password,
                 validator: (value) => TValidator.validatePassword(value),
                 obscureText: controller.hidePassword.value,
@@ -45,7 +45,7 @@ class TLoginForm extends StatelessWidget {
                     prefixIcon: const Icon(Iconsax.password_check),
                     suffixIcon: IconButton(
                         onPressed: () => controller.hidePassword.value =
-                            !controller.hidePassword.value,
+                        !controller.hidePassword.value,
                         icon: Icon(controller.hidePassword.value
                             ? Iconsax.eye_slash
                             : Iconsax.eye))),

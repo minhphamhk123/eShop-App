@@ -1,5 +1,4 @@
 import 'package:e_store/common/widgets/list_tiles/settings_menu_tile.dart';
-import 'package:e_store/features/personalization/controlers/setting_controller.dart';
 import 'package:e_store/features/shop/screens/order/order.dart';
 import 'package:e_store/features/personalization/screens/address/address.dart';
 import 'package:e_store/utils/constants/sizes.dart';
@@ -12,6 +11,7 @@ import '../../../../common/widgets/custom_shapes/containers/primary_header_conta
 import '../../../../common/widgets/list_tiles/user_profile_tile.dart';
 import '../../../../common/widgets/texts/section_heading.dart';
 import '../../../../utils/constants/colors.dart';
+import '../../controllers/setting_controller.dart';
 import '../profile/profile.dart';
 
 class SettingScreen extends StatelessWidget {

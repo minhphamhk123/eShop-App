@@ -19,7 +19,7 @@ class VerifyScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(VerifyEmailController());
-    
+    controller.emailCheck.value = email!;
     
     return Scaffold(
       appBar: AppBar(
@@ -54,7 +54,7 @@ class VerifyScreen extends StatelessWidget {
                       onPressed: () => controller.checkButton(),
                       child: const Text(TTexts.tContinue))),
               const SizedBox(height: TSizes.spaceBtwItems,),
-              SizedBox(width: double.infinity, child: TextButton(onPressed: () => controller.sendEmailVerification(), child: const Text(TTexts.resendEmail))),
+              SizedBox(width: double.infinity, child: TextButton(onPressed: () => controller.sendEmailVerification(email!), child: const Text(TTexts.resendEmail))),
             ],
           ),
         ),

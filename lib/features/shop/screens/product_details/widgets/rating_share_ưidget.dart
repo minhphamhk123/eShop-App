@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../../../utils/constants/sizes.dart';
+import '../../../models/product_model.dart';
 
 class TRatingAndShare extends StatelessWidget {
   const TRatingAndShare({
-    super.key,
+    super.key, required this.product,
   });
+
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +24,8 @@ class TRatingAndShare extends StatelessWidget {
             Text.rich(
                 TextSpan(
                     children: [
-                      TextSpan(text: '5.0 ', style: Theme.of(context).textTheme.bodyLarge),
-                      const TextSpan(text: '(199)'),
+                      TextSpan(text: product.rating.toString(), style: Theme.of(context).textTheme.bodyLarge),
+                      TextSpan(text: ' (${product.reviews?.length})'),
                     ]
                 )
             ),

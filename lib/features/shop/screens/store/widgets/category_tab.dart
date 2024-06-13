@@ -1,5 +1,6 @@
 import 'package:e_store/common/widgets/layouts/grid_layout.dart';
 import 'package:e_store/common/widgets/texts/section_heading.dart';
+import 'package:e_store/features/shop/models/category_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -10,7 +11,9 @@ import '../../../../../utils/constants/sizes.dart';
 import '../../all_products/all_products.dart';
 
 class TCategoryTab extends StatelessWidget {
-  const TCategoryTab({super.key});
+  const TCategoryTab({super.key, required this.category});
+
+  final CategoryModel category;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +34,7 @@ class TCategoryTab extends StatelessWidget {
               TSectionHeading(title: 'You might like', onPressed: () => Get.to(() => const AllProducts())),
               const SizedBox(height: TSizes.spaceBtwItems),
 
-              TGridLayout(itemCount: 4, itemBuilder: (_, index) => const TProductCardVertical())
+              // TGridLayout(itemCount: 4, itemBuilder: (_, index) => const TProductCardVertical())
             ],
           ),
         ),

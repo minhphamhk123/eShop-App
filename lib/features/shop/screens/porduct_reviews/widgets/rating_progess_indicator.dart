@@ -1,16 +1,20 @@
 import 'package:e_store/features/shop/screens/porduct_reviews/widgets/progess_indicator_and_rating.dart';
 import 'package:flutter/material.dart';
 
+import '../../../models/product_model.dart';
+
 class TOverallProductRating extends StatelessWidget {
   const TOverallProductRating({
-    super.key,
+    super.key, required this.product,
   });
+
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Expanded(flex: 3,child: Text('4.8', style: Theme.of(context).textTheme.displayLarge)),
+        Expanded(flex: 3,child: Text('${product.reviews?.length}', style: Theme.of(context).textTheme.displayLarge)),
         const Expanded(
           flex: 7,
           child: Column(

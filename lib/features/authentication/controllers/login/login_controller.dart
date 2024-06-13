@@ -9,6 +9,7 @@ import 'package:get_storage/get_storage.dart';
 
 import '../../../../data/repositories/authentication/authentication_repository.dart';
 import '../../../../navigation_menu.dart';
+import '../../screens/signup/verify_email.dart';
 
 
 class LoginController extends GetxController {
@@ -18,7 +19,7 @@ class LoginController extends GetxController {
   final localStorage = GetStorage();
 
   /// Variables
-  final rememberMe = false.obs;
+  final rememberMe = true.obs;
   final hidePassword = true.obs; //Observable for hiding/showing password
   final email = TextEditingController(); // Controller for username input
   final password = TextEditingController(); // Controller for password input
@@ -27,8 +28,8 @@ class LoginController extends GetxController {
 
   @override
   void onInit() {
-    email.text = localStorage.read('REMEMBER_ME_EMAIL');
-    password.text = localStorage.read('REMEMBER_ME_PASSWORD');
+    email.text = localStorage.read('REMEMBER_ME_EMAIL') ?? '';
+    password.text = localStorage.read('REMEMBER_ME_PASSWORD') ?? '';
     super.onInit();
   } // Form key for form validation
 
@@ -54,6 +55,9 @@ class LoginController extends GetxController {
       if (rememberMe.value) {
         localStorage.write('REMEMBER_ME_EMAIL', email.text.trim());
         localStorage.write('REMEMBER_ME_PASSWORD', password.text.trim());
+      } else {
+        localStorage.remove('REMEMBER_ME_EMAIL');
+        localStorage.remove('REMEMBER_ME_PASSWORD');
       }
 
       // Login
@@ -62,12 +66,14 @@ class LoginController extends GetxController {
 
       // Remove loader
       TFullScreenLoader.stopLoading();
-
       // Redirect
-      if (token != null) {
+      if (logStatus == 'Login success') {
         Get.offAll(() => const NavigationMenu());
-      } else {
+      } else if (logStatus == "Email hasn't been verified"){
         TLoaders.errorSnackBar(title: 'Error', message: logStatus);
+        Get.offAll(() => VerifyScreen(email: email.text.trim()));
+      } else {
+        TLoaders.errorSnackBar(title: 'Something wrong', message: logStatus);
       }
     } catch(e) {
       TFullScreenLoader.stopLoading();

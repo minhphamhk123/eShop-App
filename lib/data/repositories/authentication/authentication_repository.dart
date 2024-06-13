@@ -45,7 +45,7 @@ class AuthenticationRepository extends GetxController {
   }
 
   screenRedirect() async {
-    var verify = deviceStorage.read('IsVerify');
+    var verify = await deviceStorage.read('IsVerify');
     var token = await storage.read(key: 'access_token');
     user.value = await getUser();
     if (user.value != null) {
@@ -59,10 +59,10 @@ class AuthenticationRepository extends GetxController {
       }
     } else {
       // Local storage
-      if (kDebugMode) {
+
         print('=============== GET STORAGE Auth Repo ====================');
         print(deviceStorage.read('IsFirstTime'));
-      }
+
 
       deviceStorage.writeIfNull('IsFirstTime', true);
       deviceStorage.read('IsFirstTime') != true
@@ -127,8 +127,9 @@ class AuthenticationRepository extends GetxController {
           }),
           headers: {'Content-Type': 'application/json'});
 
+      final responseBody = json.decode(res.body);
+
       if (res.statusCode == 200) {
-        final responseBody = json.decode(res.body);
         final token = responseBody['user']['token'];
         await storage.write(key: 'access_token', value: token);
         print('Extracted token: $token');
@@ -141,7 +142,7 @@ class AuthenticationRepository extends GetxController {
       } else if (res.statusCode == 402) {
         return "Email hasn't been verified";
       }
-      return '';
+      return responseBody['message'];
     } catch (e) {
       print(e);
       throw 'Something went wrong. Please try again';
@@ -149,12 +150,11 @@ class AuthenticationRepository extends GetxController {
   }
 
   /// [Re_send email]
-  Future<void> sendEmail(String id, String email) async {
+  Future<void> sendEmail(String email) async {
     var url = Uri.http('$ip:8080', '/api/auth/verify/sendemail');
     try {
       http.Response res = await http.post(url,
           body: jsonEncode({
-            '_id': id,
             'email': email,
           }),
           headers: {'Content-Type': 'application/json'}

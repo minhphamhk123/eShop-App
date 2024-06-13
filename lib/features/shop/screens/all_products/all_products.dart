@@ -13,10 +13,10 @@ class AllProducts extends StatelessWidget{
 
     return const Scaffold(
       ///Appbar
-      appBar: const TAppBar(title: Text('Popular Products'), showBackArrow: true),
+      appBar: TAppBar(title: Text('Popular Products'), showBackArrow: true),
       body: SingleChildScrollView(
         child: Padding(
-            padding: const EdgeInsets.all(TSizes.defaultSpace),
+            padding: EdgeInsets.all(TSizes.defaultSpace),
             child: TSortableProducts(),
         )
       ),
